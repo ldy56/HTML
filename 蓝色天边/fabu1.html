@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./css/reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		body{
+			height: 100%;
+			background: #f0f0f0;
+		}
+		.outer{
+			width: 7.5rem;
+		}
+		.head{
+			width: 7.5rem;
+			height: 0.88rem;
+			font-size: 0.34rem;
+			color: #fff;
+			line-height: 0.88rem;
+			background: url(./img/denglu/bg_1@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: relative;
+		}
+		#hui{
+			width: 0.24rem;
+			height: 0.41rem;
+			background: url(./img/denglu/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			left: 0.2rem;
+			top: 0.23rem;
+		}
+		#fasong{
+			float: right;
+			margin-right: 0.2rem;
+		}
+		.con{
+			font-size: 0.34rem;
+			color: #c6c6c6;
+			padding-bottom: 0.2rem;
+			background: #fff;
+		}
+		.con1{
+			border-bottom: 1px solid #ccc;
+		}
+		.con span{
+			margin-left: 0.2rem;
+		}
+		.con .span1{
+			float: left;
+			margin-left: 0.2rem;
+			margin-top: 0.25rem;
+		}
+		.con .span2{
+			float: left;
+			margin-left: 0.2rem;
+			margin-top: 0.3rem;
+		}
+		#ip1{
+			width: 6.1rem;
+			height: 0.96rem;
+			font-size: 0.34rem;
+			color: #c6c6c6;
+			padding-left: 0.2rem;
+			border: none;
+			background-color:transparent;
+		}
+		#ip2{
+			width: 6.1rem;
+			height: 2.3rem;
+			font-size: 0.34rem;
+			color: #c6c6c6;
+			padding-left: 0.2rem;
+			padding-top: 0.34rem;
+			border: none;
+			background-color:transparent;
+		}
+		li{
+			width: 1.5rem;
+			height: 1.5rem;
+			display: inline-block;
+			margin-left: 0.2rem;
+		}
+		#jia{
+			background: url(./img/denglu/fabu1.png) 0 0 no-repeat;
+			background-size: 100%;
+		}
+		.con p{
+			padding-left: 0.2rem;
+			font-size: 0.24rem;
+			color: #dedede;
+			margin-top: 0.22rem;
+		}
+		#ip3{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			<div id="hui"></div>
+			<span id="fasong">发送</span>
+		</div>
+		<div class="con">
+			<div class="con1">
+				<span class="span1">标题</span><input type="text" name="" id="ip1" value="">
+			</div>
+			
+			<input type="file" name="" id="ip3" value="">
+			<span class="span2">内容</span><textarea name="" id="ip2"></textarea>
+			<ul>
+				<li id="jia"></li>
+			</ul>
+			<p>(最多上传五张图片，单张图片大小小于500x500)</p>
+		</div>
+	</div>
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var ww=document.documentElement.clientWidth;
+			var scale=ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+		window.onresize=function(){
+			rem();
+		}
+		var ip2=document.getElementById('ip2');
+		var ip1=document.getElementById('ip1');
+		ip1.onfocus=function(){
+			if (true) {};
+		}
+		
+		$(function(){
+			$("#jia").click(function(){
+				$("#ip3").click();
+			});
+			$("#hui").click(function(){
+				history.back();
+			})
+			$("#fasong").click(function(){
+				if ($("#ip1").val()==""||$("#ip2").val()=="") {
+					alert("内容不能为空！");
+				};
+			})
+		})
+		
+	</script>
+</body>
+</html>

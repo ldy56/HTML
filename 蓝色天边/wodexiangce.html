@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="./css/reset.css">
+	<script src="./jquery/jquery.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		.outer{
+			margin: 0 auto;
+			width: 7.5rem;
+			/* background: #f0f0f0; */
+		}
+		.top{
+			text-align: center;
+			overflow: hidden;
+			height: 0.66rem;
+			padding-top: 0.22rem;
+			background: url(./img/wodexiangce/bg_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.top-left{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-left: 0.2rem;
+			float: left;
+			background: url(./img/wodexiangce/btn_1_n@2x.png) 0 0 no-repeat;
+			background-size: 0.24rem 100%;
+		}
+		.top-right{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-right: 0.2rem;
+			float: right;
+			/* background: url(./img/xiangxiNR/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100% 100%; */
+		}
+		.top span{
+			font-size: 0.3rem;
+			color: white;
+			letter-spacing: 0.02rem;
+		}
+		.con img{
+			float: left;
+			height: 2.5rem;
+			width: 2.5rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="top">
+			<div class="top-left"></div>
+			<span>我的相册</span>
+			<div class="top-right"></div>
+		</div>
+		<div class="con">
+			<img src="./img/wodexiangce/img_1@2x.png" alt="">
+			<img src="./img/wodexiangce/img_2@2x.png" alt="">
+			<img src="./img/wodexiangce/img_3@2x.png" alt="">
+		</div>
+	</div>
+
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var Ww=document.documentElement.clientWidth;
+			var scale=Ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+
+		window.onresize=function(){
+			rem();
+		}
+		
+		$(function(){
+			$(".top-left").on("touchstart",function(){
+				history.back();
+			})
+			var a=1
+			$(".con img").on("touchstart",function(){
+				if(a==1){
+					$(this).siblings().css({
+						"display":"none"
+					})
+					$(this).animate({
+						"width":"100%",
+						"height":"100%"
+					},300)
+					a=0
+				}
+				else{
+					$(this).siblings().css({
+						"display":"block"
+					})
+					$(this).css({
+						"width":"2.5rem",
+						"height":"2.5rem"
+					},300)
+					a=1
+				}
+			})
+
+
+		})
+	</script>
+</body>
+</html>

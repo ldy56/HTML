@@ -1,0 +1,83 @@
+#bdy{
+	width: 100vw;
+	height: 100vh;
+	background:  url(../imgs/back.jpg) 0 0 no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+.game{
+	width: 1097px;
+	height: 768px;
+	background:  url(../imgs/factory.jpg) 0 0 no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	margin:auto auto;
+	z-index: 10;
+}
+.game .controlArea{
+	width: 100%;
+	height: 124px;
+	background:  url(../imgs/blackbg.jpg) 0 0 no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+.controlArea .logo{
+	position: absolute;
+	left: 58px;
+	top: 50px;
+}
+.controlArea .logo img{
+	display: block;
+	width: 182px;
+	height: 41px;
+}
+.controlArea .btn img{
+	display: block;
+	width: 180px;
+	height: 63px;
+}
+.controlArea .begin{
+	position: absolute;
+	left: 357px;
+	top: 38px;
+}
+.controlArea .again{
+	position: absolute;
+	left: 590px;
+	top: 38px;
+}
+.controlArea .quit{
+	position: absolute;
+	left: 823px;
+	top: 38px;
+}
+.wrap{
+	overflow: hidden;
+	position: relative;
+	width: 1097px;
+	height: 100%;
+
+}
+.gameArea{
+	width:818px;
+	height: 460px;
+	position: relative;
+	/*border:1px solid #333;*/
+	float: left;
+	background: url(../imgs/BG.jpg) 0 0 no-repeat;
+	background-size: 100% 100%;
+
+}
+.gameArea .hidimg{
+	z-index: 9999;
+	opacity: 0.1;
+}
+.gameArea .canmoveimg{
+	z-index: 99999;
+}

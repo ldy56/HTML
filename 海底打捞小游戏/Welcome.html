@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome!</title>
+	<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	html{
+		font-size: 40px;
+		color: white;
+		font-family: "Microsoft YaHei"
+	}
+	body{
+		width: 100%;
+		height: 100%;
+		background: url(./img/bg.png)0 0 no-repeat;
+		background-size: 100%; 
+	}
+	#outer{
+		width: 1198px;
+		height: 798px;
+		margin: 0 auto;
+		position: absolute;
+		overflow: hidden;
+		background: url(./img/bacs.png)0 0 no-repeat;
+		background-size: 1198px 798px;
+		overflow: hidden;
+		left: 50%;
+		top: 50%;
+		transform:translateX(-50%) translateY(-50%);
+	}
+	 .button{
+		width: 258px;
+		position: absolute;
+		left: 492px;
+		top: 255px;
+	}
+	.button li{
+		width:258px;
+		height: 112px;
+		background-size: 258px 112px;
+		/* margin-bottom: 42px; */
+	}
+	.button li:nth-child(1){
+		background: url(./img/startbt.png)0 0 no-repeat;
+		margin-bottom: 10px;
+	}
+	.button li:nth-child(2){
+		background: url(./img/helpbt.png)0 0 no-repeat;
+		margin-bottom: 10px;
+	}
+	.button li:nth-child(3){
+		background: url(./img/gradebt.png)0 0 no-repeat;
+		margin-bottom: 8px;
+	}
+	.button li:nth-child(4){
+		background: url(./img/exitbt.png)0 0 no-repeat;
+		margin-bottom: 8px;
+	}
+	#grade{
+		width: 1198px;
+		height: 798px;
+		margin: 0 auto;
+		position: absolute;
+		overflow: hidden;
+		background: url(./img/back-g.png)0 0 repeat;
+		left: 50%;
+		top: 50%;
+		transform:translateX(-50%) translateY(-50%);
+		display: none;
+	}
+	#grade p{
+		width: 1198px;
+		height: 80px;
+		background-color: rgb(43,172,226);
+		line-height: 80px;
+		text-align: center;
+		opacity: 0.8;
+		font-size: 50px;
+		color: #fff;
+		text-shadow: 10px 10px 10px purple;
+	}
+	#help{
+		width: 1198px;
+		height: 798px;
+		margin: 0 auto;
+		position: absolute;
+		overflow: hidden;
+		background: url(./img/back-g.png)0 0 repeat;
+		background-size: 1198px 798px;
+		left: 50%;
+		top: 50%;
+		transform:translateX(-50%) translateY(-50%);
+		display: none;
+		font-size: 50px;
+		color: cyan;
+		text-shadow: 10px 10px 10px purple;
+	}
+	</style>
+</head>
+<body>
+	<div id="outer">
+		<ul class="button">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div id="grade">
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+			<p>暂无</p>
+		</div>
+		<div id="help"></div>
+	</div>
+	<script>
+		var lis=document.getElementsByTagName('li');
+		var grade=document.getElementById('grade');
+		var help=document.getElementById('help');
+		var gradearr=[];
+		document.onclick=function(e) {
+			if(grade.style.display=="block"){
+				grade.style.display="none";
+			}
+			var e=e||window.event;
+			var tar=e.target||target.srcElement;
+			if(tar==lis[0]){
+				window.open("./catch.html","_blank");
+			}else if(tar==lis[1]){
+				help.style.display="block";
+			}else if(tar==lis[2]){
+				grade.style.display="block";
+				storage();
+			}else if(tar==grade||tar==help){
+				grade.style.display="none";
+				help.style.display="none";
+			}
+		}
+		function storage() {
+			if(localStorage.length!=0){
+				for (var i = 0; i < localStorage.length; i++) {
+					gradearr[i]=localStorage[i].split("=",2);
+				}
+				for (var i = 0; i < localStorage.length; i++) {
+					for (var j = 0; j < localStorage.length; j++) {
+						if(Number(gradearr[i][1])>Number(gradearr[j][1])){
+							var temp;
+							temp = gradearr[i];
+							gradearr[i]=gradearr[j];
+							gradearr[j]=temp;
+						}
+					}
+				}
+				
+				for (var i = 0; i < gradearr.length; i++) {
+					grade.children[i].innerHTML="姓名:"+gradearr[i][0]+"分数:"+gradearr[i][1];
+				}
+			}
+		}
+		help.innerHTML = "</br>美丽的海洋遭到了破坏，让我们携起手来保卫鱼儿们的生存环境。</br>看准时机下钩，清理那些漂浮而过的垃圾，不同的垃圾会有不同的分数，当然不同的垃圾也会有不同的重量~</br></br>不要抓到可爱的鱼儿哟，会被扣除一些时间来作为惩罚。</br>偷偷告诉你：如果眼疾手快抓到一闪而过的小螃蟹，那么你会获得随机奖励哦。"
+	</script>
+</body>
+</html>

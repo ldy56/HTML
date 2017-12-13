@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./css/reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		.outer{
+			width: 7.5rem;
+			background: url(./img/denglu/bg_2@2x.png) 0 0 no-repeat;
+			background-size: 100% 100%;
+		}
+		.head{
+			height: 0.88rem;
+			text-align: center;
+			font-size: 0.34rem;
+			color: #fff;
+			line-height: 0.88rem;
+			background: url(./img/denglu/bg_1@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: relative;
+		}
+		#hui{
+			width: 0.24rem;
+			height: 0.41rem;
+			background: url(./img/denglu/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			left: 0.2rem;
+			top: 0.23rem;
+		}
+		.tu{
+			width: 3.06rem;
+			height: 1.7rem;
+			margin: 0 auto;
+			margin-top: 1.31rem;
+			margin-bottom: 1.73rem;
+			background: url(./img/denglu/img_1@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+		}
+		.con{
+			width: 5.8rem;
+			height: 1.85rem;
+			margin: 0 auto;
+			font-size: 0.24rem;
+			color: #9a9a9a;
+			background: url(./img/denglu/bg_3@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+		}
+		.con_top{
+			height: 0.92rem;
+			background: url(./img/denglu/img_2@2x.png) 0.27rem 0.25rem no-repeat;
+			background-size: 0.26rem 0.43rem;
+		}
+		#ip1{
+			width: 2.6rem;
+			height: 0.32rem;
+			font-size: 0.24rem;
+			color: #9a9a9a;
+			background-color:transparent;
+			padding-left: 1.2rem;
+			padding-right: 2rem;
+			padding-top: 0.3rem;
+			padding-bottom: 0.3rem;
+			border: none;
+			border-bottom: 1px solid #fff;
+		}
+		.con_bot{
+			height: 0.92rem;
+			background: url(./img/denglu/img_3@2x.png) 0.27rem 0.35rem no-repeat;
+			background-size: 0.33rem 0.29rem;
+			position: relative;
+		}
+		#ip2{
+			width: 2.6rem;
+			height: 0.32rem;
+			font-size: 0.24rem;
+			color: #9a9a9a;
+			background-color:transparent;
+			padding-left: 1.2rem;
+			padding-top: 0.3rem;
+			padding-bottom: 0.3rem;
+			border: none;
+			border-bottom: 1px solid #fff;
+		}
+		#yanz{
+			width: 1.5rem;
+			height: 0.5rem;
+			color: #fff;
+			line-height: 0.5rem;
+			text-align: center;
+			background: url(./img/denglu/btn_2_n@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			right: 0.18rem;
+			top: 0.21rem;
+		}
+		#denglu{
+			width: 5.6rem;
+			height: 0.8rem;
+			color: #fff;
+			font-size: 0.34rem;
+			text-align: center;
+			line-height: 0.8rem;
+			margin: 0 auto;
+			margin-top: 1.06rem;
+			margin-bottom: 2.72rem;
+			background: url(./img/denglu/btn_1_h-@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			登录
+			<div id="hui"></div>
+		</div>
+		<div class="tu"></div>
+		<div class="con">
+			<div class="con_top">
+				<input type="text" id="ip1" name="" value="请输入您的手机号">
+			</div>
+			<div class="con_bot">
+				<input type="text" id="ip2" name="" value="短信验证码">
+				<div id="yanz">获取验证码</div>
+			</div>
+			<div id="denglu">
+				登录
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var ww=document.documentElement.clientWidth;
+			var scale=ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+		window.onresize=function(){
+			rem();
+		}
+		function changeYZ(){
+			var arrays=new Array(  
+                '1','2','3','4','5','6','7','8','9','0',  
+                'a','b','c','d','e','f','g','h','i','j',  
+                'k','l','m','n','o','p','q','r','s','t',  
+                'u','v','w','x','y','z',  
+                'A','B','C','D','E','F','G','H','I','J',  
+                'K','L','M','N','O','P','Q','R','S','T',  
+                'U','V','W','X','Y','Z'               
+        	); 
+			code ='';
+			for(var i = 0; i<4; i++){
+				var r = parseInt(Math.random()*arrays.length);
+				code += arrays[r];
+			}
+			$("#yanz").html(code);
+		}
+		$(function(){
+			$("#hui").click(function(){
+				history.back();
+			})
+			$("#denglu").click(function(){
+				if ($("#ip1").val()==""||$("#ip2").val()==""||$("#ip1").val()=="请输入您的手机号"||$("#ip2").val()=="短信验证码") {
+					alert("内容不能为空！");
+				}else if (!(/^1[34578]\d{9}$/.test($("#ip1").val()))) {
+					alert("手机号码有误，请重填");
+				}else if($("#ip2").val()!=$("#yanz").text()){
+					alert("验证码有误，请重填");
+				}else{
+					window.open("./")
+				}
+			})
+			$("#yanz").click(changeYZ);
+			$("#ip1").focus(function(){
+				if ($("#ip1").val()=="请输入您的手机号"){
+					$("#ip1").val("");
+				}
+			})
+			$("#ip1").blur(function(){
+				if ($("#ip1").val()==""){
+					$("#ip1").val("请输入您的手机号");
+				}
+			})
+			$("#ip2").focus(function(){
+				if ($("#ip2").val()=="短信验证码"){
+					$("#ip2").val("");
+				}
+			})
+			$("#ip2").blur(function(){
+				if ($("#ip2").val()==""){
+					$("#ip2").val("短信验证码");
+				}
+			})
+
+		});
+	</script>
+</body>
+</html>

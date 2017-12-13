@@ -1,0 +1,725 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>消消乐</title>
+	<meta name="keywords" content="">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./reset.css">
+	<style>
+		html{
+			font-size: 100px;
+		}
+		body{
+			background: url("./bg-big.jpg") 0 0 no-repeat;
+			background-size: 100%;
+		}
+		.fen{
+			font-size: 0.3rem;
+			position: absolute;
+			left: 2rem;
+			top: 1rem;
+			color: #1e3942;
+		}
+		.time{
+			font-size: 0.3rem;
+			position: absolute;
+			color: #1e3942;
+			left: 2rem;
+			top: 2.2rem;
+		}
+		#inner img{
+			width: 0.5rem;
+			height: 0.5rem;
+			position: absolute;
+		}
+		.dian{
+			border: 0.03rem solid green;
+			margin: -0.03rem 0 0 -0.03rem;
+		}
+		#inner{
+			margin: 0 auto;
+			width: 4.96rem;
+			height: 4.96rem;
+			position: relative;
+			overflow: hidden;
+		}
+		#inner p{
+			width: 0.55rem;
+			height: 0.55rem;
+			position: absolute;
+			z-index: 10;
+		}
+		#outer{
+			padding-top: 1rem ;
+			overflow: hidden;
+			padding-left:0.05rem; 
+		}
+		.pop_bg{
+			width: 100%;
+			height:7.8rem;
+		}
+		#ipt_outer{
+			background-color: #fffba9;
+			position: absolute;
+			top: 2.5rem;
+			left: 3.86rem;
+			font-size: 0.3rem;\
+			display: none;
+			width: 6rem;
+			overflow: hidden;
+			text-align: center;
+			overflow: hidden;
+			color: #6495ED;
+		}
+		#ipt_outer p{
+			float: left;
+			width: 6rem;
+			text-align: center;
+		}
+		#ipt_outer button{
+			border: none;
+			background: none;
+			color: #6495ED;
+			font-size: 0.3rem;
+		}
+		#ipt_outer button:hover{
+			color: #216818;
+		}
+		#ipt1{
+			float: left;
+			display: inline-block;
+			width: 5rem;
+			margin: 0 0.5rem;
+			height: 0.4rem;
+			text-align: center;
+			font-size: 0.2rem;
+		}
+		#btn0{
+		}
+		#btn0:hover{
+			color: #216818;
+		}
+		#masking{
+			width: 4.95rem;
+			height: 4.95rem;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: -1;
+			background-color: #fffba9;
+			opacity: 0.5;
+			filter: Alpha(opcity = 50);
+		}
+		#tiShi{
+			background-color: #fffba9;
+			border: 1px solid #000;
+			line-height: 0.5rem;
+			position: absolute;
+			top: 2.5rem;
+			left: 3.86rem;
+			font-size: 0.3rem;
+			display: none;
+			width: 6rem;
+			text-align: center;
+			color: #1e3942;
+		}
+		#tuichu{
+			position: absolute;
+			top: 5.4rem;
+			left: 10rem;
+			background: none;
+			color: #216818;
+			font-size: 0.3rem;
+		}
+		.logo{
+			position: absolute;
+			top: 5.3rem;
+			left: 1rem;
+			width: 1.764rem;
+			height: 0.405rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="pop_bg">
+		<div class="fen">分数:<span id="sc"></span></div>
+		<div class="time">剩余<span id="ptti"></span></div>
+		<div id="outer">
+			<ul id="inner">
+				<div id="masking"></div>
+			</ul>
+		</div>
+		<div id="ipt_outer">
+			<p id="ipt_fen">请输入姓名</p>
+			<input id="ipt1" type="text" name="" value="">
+			<p id="btn0">确定</p>
+			<button id="btn1">重新开始</button>
+			<button id="btn3">返回主界面</button>
+		</div>
+		<div id="tiShi">恭喜过关 马上下一关</div>
+		<a href="../localStorage.html"><div id="tuichu">退出游戏</div></a>
+		<img src="./logo.png" alt="" class="logo">
+	</div>
+	<script>
+
+		var outer=document.getElementById('outer');
+		var inner=document.getElementById('inner');
+		var Ww=document.documentElement.clientWidth;
+		var bl=Ww/1366;
+		var ew1=5;
+		var ew2=50;
+		//创建一个二维数组,数组中的0代表元素
+		var Map=[
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0]]
+		//将数组的行变为列 并生成li标签
+		var map1=new Array();
+		for (var v = 0; v < Map.length; v++) {
+			map1[v]=new Array();
+			for (var w = 0; w < Map[0].length; w++) {
+				var po=document.createElement("img");
+				// po.width="0.5rem";
+				// po.height="0.5rem";
+				inner.appendChild(po);
+				map1[v][w]=Map[w][v];
+			}
+		}
+		POP.prototype.tiShiban=function (a,b){
+			var t_end = 0;
+			tiShi.innerHTML = a;
+			ptti.style.display = "none";
+			tiShi.style.display = "block";
+			var time_end = setInterval(function (){
+				t_end++;
+				inner.onclick = null;
+				if (t_end > 30) {
+					if (b == 0) {
+						tiShi.style.display = "none";
+						ptti.style.display = "inline-block";
+						_this.xianshi();
+					} else if (b == 1){
+						_this.zuihou();
+					};
+					tiShi.style.display = "none";
+					ptti.style.display = "inline-block";
+					_this.Jh0();
+					clearInterval(time_end);
+				};
+			},100);
+		}
+		//两种不同的模式
+		POP.prototype.xianshi=function (){
+			//初始化消消乐对象pop
+			this.initializationPOP();
+			//开局先判断有没有能消除的
+			this.alljudge0();
+			//初始化inner的点击事件
+			this.Jh0();
+			var a;
+			ipt_outer.style.display="none";
+			if (this.gameType == 0) {
+				if (this.pass == 1) {
+
+					a = "现在是第" + this.pass + "关" + ",请在限定步数内完成目标" + this.pass*100 + "分";
+					console.log(a);
+					this.tiShiban(a,2);
+				}
+				ptti.innerHTML=this.step + "步";
+				var time=setInterval(function (){
+					
+					if (_this.score >= _this.pass*100) {
+						_this.pass++;
+						inner.onclick = null;
+						console.log("123");
+						_this.step = 33 - _this.pass * 3;
+						clearInterval(time);
+						a = "恭喜过关,马上进入下一关,做好准备"+"下一关是第" + _this.pass + "关" + ",请在限定步数内完成目标" + _this.pass*100 + "分";
+						_this.tiShiban(a,0);
+					} else{};
+					if (_this.step <= 0) {
+						console.log("123")
+
+						inner.onclick = null;
+						if (_this.score >= _this.pass*100) {
+							_this.pass++;
+							_this.step = 33 - _this.pass * 3;
+							a = "恭喜过关,马上进入下一关,做好准备"+"下一关是第" + _this.pass + "关" + ",请在限定步数内完成目标" + _this.pass*100 + "分";
+							_this.tiShiban(a,0);
+						} else{
+							a = "闯关失败,正在结算";
+							_this.tiShiban(a,1);
+						};
+						clearInterval(time);
+					} else{
+						ptti.innerHTML=_this.step + "步";
+					};
+				},10);
+			} else{
+				if (this.pass == 1) {
+
+					a = "现在是第" + this.pass + "关" + ",请在限定时间内完成目标" + this.pass*100 + "分";
+					console.log(a);
+					this.tiShiban(a,2);
+				}
+				// this.pttime=5;
+				ptti.innerHTML=this.pttime + "秒";
+				var time=setInterval(function (){
+					_this.pttime--;
+					if (_this.score >= _this.pass*100) {
+						inner.onclick = null;
+						_this.pass++;
+						_this.pttime = 65 - _this.pass * 5;
+						
+						clearInterval(time);
+						a = "恭喜过关,马上进入下一关,做好准备"+"下一关是第" + _this.pass + "关" + ",请在限定时间内完成目标" + _this.pass*100 + "分";
+						_this.tiShiban(a,0);
+					} else{};
+					if (_this.pttime < 0) {
+						inner.onclick=null;
+						clearInterval(time);
+						if (_this.score >= _this.pass*100) {
+							_this.pass++;
+							_this.pttime = 70 - _this.pass * 10 + 3;
+
+							a = "恭喜过关,马上进入下一关,做好准备"+"下一关是第" + _this.pass + "关" + ",请在限定时间内完成目标" + _this.pass*100 + "分";
+							_this.tiShiban(a,0);
+						} else{
+							a = "闯关失败,正在结算";
+							_this.tiShiban(a,1);
+						};
+					} else{
+						ptti.innerHTML=_this.pttime + "秒";
+					};
+				},1000)
+			};
+			
+		}
+		POP.prototype.zuihou=function (){
+			inner.onclick = null;
+			ipt_outer.style.display="block";
+			btn0.onclick=function (){
+				var iptcon=ipt1.value;
+				if (iptcon == "") {
+					localStorage.setItem(_this.score + Math.random(),"没有留下姓名的高手");
+				} else{
+					localStorage.setItem(_this.score + Math.random(),iptcon);
+				};
+				window.open("../localStorage.html", "_self")
+			}
+			btn1.onclick=function (){
+				sc.innerHTML = 0;
+				//实例化消消乐对象pop
+				_this.score = 0;//分数
+				_this.step = 30;//步数
+				_this.gameType = Math.floor(Math.random()*2);//随机游戏模式
+				_this.pass = 1;//关卡数
+				_this.pttime = 60;
+				//开始计时
+				_this.xianshi();
+			};
+			btn3.onclick=function (){
+				window.open("../localStorage.html", "_self");
+			}
+			// ipt_fen.innerHTML="请输入名字";
+		}
+
+		//开局实例化
+		window.onload=function (){
+			//实例化消消乐对象pop
+			var pop=new POP(map1);
+			//开始计时
+			pop.xianshi();
+		}
+
+
+		//创建消消乐对象POP
+		function POP(map1){
+			this.lis=inner.getElementsByTagName('img');
+			this.map=map1;
+			this.x=this.map.length;
+			this.y=this.map[0].length;
+			this.ew1=0.05;//li之间的间隙
+			this.ew2=0.5;//li宽
+			this.score=0;//分数
+			this.step = 30;//步数
+			this.gameType = Math.floor(Math.random()*2);//随机游戏模式
+			this.pass = 1;//关卡数
+			this.pttime = 63;
+			_this=this;
+		}
+		//初始化消消乐
+		POP.prototype.initializationPOP=function (){
+			var i=0;
+			this.tuan = Math.floor(Math.random()*3);
+			for (var v = 0; v < this.y; v++) {
+				for (var w = 0; w < this.x; w++) {
+					this.map[v][w]=this.lis[i];
+					this.map[v][w].rdm=Math.floor(Math.random()*5);	
+					this.map[v][w].up=0;
+					this.map[v][w].setAttribute("idxX",v);
+					this.map[v][w].setAttribute("idxY",w);
+					this.map[v][w].dian=0;
+					this.map[v][w].style.left=v*(this.ew1+this.ew2)+0.03+"rem";
+					this.map[v][w].style.top=w*(this.ew1+this.ew2)+0.03+"rem";
+					this.creatPOP(this.map[v][w]);
+					if (this.map[v][w]==-1) {
+						this.map[v][w].rmv0=-1;
+						this.map[v][w].style.opacity="0.3";//暂时没有解决好
+					} else {
+						this.map[v][w].rmv0=0;
+					}
+					i++;
+				}
+			}
+		}
+		//初始化消消乐块的颜色
+		POP.prototype.creatPOP=function (E){
+			switch(E.rdm){
+				case 0:
+					E.src="./images/p" + this.tuan + "1.png";
+					break;
+				case 1:
+					E.src="./images/p" + this.tuan + "2.png";
+					break;
+				case 2:
+					E.src="./images/p" + this.tuan + "3.png";
+					break;
+				case 3:
+					E.src="./images/p" + this.tuan + "4.png";
+					break;
+				case 4:
+					E.src="./images/p" + this.tuan + "5.png";
+					break;
+			}
+		}
+		//设置点击事件
+		POP.prototype.Jh0=function (pop){
+			// _this=this;
+			inner.onclick=this.Jh;
+		}
+		//inner点击事件
+		POP.prototype.Jh=function (ev){
+			e=ev||window.event;
+			e.target=e.target||target.srcElement;
+			if (e.target.nodeName=="IMG") {
+				var Dx=e.target.getAttribute("idxX");
+				var Dy=e.target.getAttribute("idxY");
+				var z=0;
+				Dx=parseInt(Dx);
+				Dy=parseInt(Dy);
+				if (_this.map[Dx][Dy].rmv0==-1) {
+				}else{
+
+					var a=null,b=null,c=null,d=null;
+					if (_this.map[Dx][Dy].dian==1) {
+						z=0;
+					} else if (Dx!=0&&_this.map[Dx-1][Dy].dian==1) {
+						z=1;
+					} else if (Dx!=_this.map[0].length-1&&_this.map[Dx+1][Dy].dian==1){
+						z=2;
+					} else if (Dy!=0&&_this.map[Dx][Dy-1].dian==1) {
+						z=3;
+					} else if (Dy!=_this.map[0].length-1&&_this.map[Dx][Dy+1].dian==1){
+						z=4;
+					}else{z=0;}
+					for (var v = 0; v < _this.map.length; v++) {
+						for (var w = 0; w < _this.map[0].length; w++) {
+							_this.map[v][w].className="";
+							_this.map[v][w].dian=0;
+						}
+					}
+					switch(z){
+						case 1:
+						_this.Jh1(_this.map[Dx-1][Dy],_this.map[Dx][Dy],0)
+						break;
+						case 2:
+						_this.Jh1(_this.map[Dx+1][Dy],_this.map[Dx][Dy],0)
+						break;
+						case 3:
+						_this.Jh1(_this.map[Dx][Dy-1],_this.map[Dx][Dy],0)
+						break;
+						case 4:
+						_this.Jh1(_this.map[Dx][Dy+1],_this.map[Dx][Dy],0)
+						break;
+						case 0:
+						_this.map[Dx][Dy].className="dian";
+						_this.map[Dx][Dy].dian=1;
+						break;
+					}
+				}
+				
+			}	
+		}
+		//互换动画
+		POP.prototype.Jh1=function (x,y,z){
+			
+			inner.onclick=null;
+			for (var v = 0; v < this.map.length; v++) {
+				for (var w = 0; w < this.map[0].length; w++) {
+					this.map[v][w].className="";
+					this.map[v][w].dian=0;
+				}
+			}
+			var Ax=x.offsetLeft;
+			var Ay=x.offsetTop;
+			var Bx=y.offsetLeft;
+			var By=y.offsetTop;
+			var k1x=0,k1y=0,k2=0;
+			var time1=setInterval(function (){
+				k1x+=(Bx-Ax)/10;
+				k1y+=(By-Ay)/10;
+				x.style.left=Ax+k1x+"px";
+				x.style.top=Ay+k1y+"px";
+				y.style.left=Bx-k1x+"px";
+				y.style.top=By-k1y+"px";
+				k2++;
+				if (k2>=10) {
+					var D1x=x.getAttribute("idxX");
+					var D1y=x.getAttribute("idxY");
+					var D2x=y.getAttribute("idxX");
+					var D2y=y.getAttribute("idxY");
+					x.style.left=Ax+"px";
+					x.style.top=Ay+"px";
+					y.style.left=Bx+"px";
+					y.style.top=By+"px";
+					var R0=x.rdm;
+					x.rdm=y.rdm;
+					y.rdm=R0;
+					_this.creatPOP(_this.map[D1x][D1y]);
+					_this.creatPOP(_this.map[D2x][D2y]);
+					_this.Jh0();
+					clearInterval(time1);
+					if (z==0) {
+						_this.judge1(D1x,D1y,D2x,D2y);
+					}
+
+				} else {}
+			},20)
+		}
+		//判断互换之后有没有可以消除的
+		POP.prototype.judge1=function (a,b,c,d){
+			this.num=0;
+			this.alljudge1();
+			
+			if (this.num>0) {
+				this.step--;
+				this.removeRev();
+			} else {
+				this.step--;
+				this.Jh1(this.map[a][b],this.map[c][d],1);
+			}
+		}
+		//消除
+		POP.prototype.removeRev=function (){
+			var dd=0;
+			for (var v = 0; v < this.map.length; v++) {
+				dd=0;
+				for (var w = this.map[0].length-1; w > -1; w--) {
+					if (this.map[v][w].rmv==1) {
+						for (var i = w+dd; i > -1; i--) {
+							this.map[v][i].style.top=(i-1)*(this.ew1+this.ew2) + 0.03+"rem";
+							this.map[v][i].up+=10;
+							if (i>0) {
+								this.map[v][i].rdm=this.map[v][i-1].rdm;
+							} else if(i==0){
+								this.map[v][i].rdm=Math.floor(Math.random()*5);
+							}
+							this.creatPOP(this.map[v][i]);
+						}
+						this.map[v][w].rmv=0;
+						this.map[v].mvr=1;
+						dd++;
+					} else {}
+				}
+			}
+			this.moveRev();
+		}
+		//消除后下落动画
+		POP.prototype.moveRev=function (){
+			inner.onclick=null;
+			this.upv=(_this.ew1+_this.ew2)/10;
+			var time2=setInterval(function (){
+				var k1=0,k2=0;
+				for (var v = 0; v < _this.map.length; v++) {
+					if (_this.map[v].mvr==1) {
+						for (var w = 0; w < _this.map[v].length; w++) {
+							if (_this.map[v][w].up>0) {
+								_this.map[v][w].style.top=(_this.ew1+_this.ew2)*w-_this.map[v][w].up*_this.upv+"rem";
+								_this.map[v][w].up--;
+							}else{
+								_this.map[v][w].style.top=w*(_this.ew1+_this.ew2)+0.03+"rem";
+								k2++;
+							}
+						}
+						k1++;
+					}
+				}
+				// console.log(k2,k1);
+				if (k2>=_this.map[0].length*k1) {
+					clearInterval(time2);
+					for (var i = 0; i < _this.map.length; i++) {
+						_this.map[i].mvr=0;
+					}
+					if (k1>0) {
+						console.log("再来一遍");
+						_this.alljudge1();
+					} else {
+						_this.Jh0();
+						console.log("判断结束");
+						sc.innerHTML=_this.score;
+
+					}
+				}
+			},20)
+		}
+		//每次消除判断全局有没有能消除的
+		POP.prototype.alljudge1=function (){
+			for (var v = 0; v < this.map.length; v++) {
+				for (var w = 0; w < this.map[v].length; w++) {
+					var t1=w+1;
+					while(((t1<=this.map[0].length-1)&&(this.map[v][w].rmv0==0))&&(this.map[v][w].rdm==this.map[v][t1].rdm)){
+						t1++;
+					}
+					if (t1>=w+3) {
+						for (var b1 = w; b1 < t1; b1++) {
+							this.map[v][b1].rmv=1;
+							this.map[v].mvr=1;
+							this.num++;
+						}
+						this.score+=t1-w;
+						sc.innerHTML = this.score;
+					}
+					w=t1-1;
+				}
+			}
+			for (var v1 = 0; v1 < this.map.length; v1++) {
+				for (var w1 = 0; w1 < this.map[v1].length; w1++) {
+					var t2=w1+1;
+					while(((t2<=this.map.length-1)&&(this.map[w1][v1].rmv0==0))&&(this.map[w1][v1].rdm==this.map[t2][v1].rdm)){
+						t2++;
+					}
+					if (t2>=w1+3) {
+						for (var b2 = w1; b2 < t2; b2++) {
+							this.map[b2][v1].rmv=1;
+							this.map[b2].mvr=1;
+							this.num++;
+						}
+						this.score+=t2-w1;
+						sc.innerHTML = this.score;
+					}
+					w1=t2-1;
+				}
+			}
+			this.removeRev();
+		}
+
+		//开局初始化
+		POP.prototype.alljudge0=function (){
+			for (var v = 0; v < this.map.length; v++) {
+				for (var w = 0; w < this.map[v].length; w++) {
+					var t1=w+1;
+					while((t1<=this.map[0].length-1)&&(this.map[v][w].rdm==this.map[v][t1].rdm)){
+						t1++;
+					}
+					if (t1>=w+3) {
+						for (var b1 = w; b1 < t1; b1++) {
+							this.map[v][b1].rmv=1;
+							this.map[v].mvr=1;
+						}
+					}
+					w=t1-1;
+				}
+			}
+			for (var v1 = 0; v1 < this.map.length; v1++) {
+				for (var w1 = 0; w1 < this.map[v1].length; w1++) {
+					var t2=w1+1;
+					while((t2<=this.map.length-1)&&(this.map[w1][v1].rdm==this.map[t2][v1].rdm)){
+						t2++;
+					}
+					if (t2>=w1+3) {
+						for (var b2 = w1; b2 < t2; b2++) {
+							this.map[b2][v1].rmv=1;
+							this.map[b2].mvr=1;
+						}
+					}
+					w1=t2-1;
+				}
+			}
+			this.removeRev0();
+		}
+		POP.prototype.moveRev0=function (){
+			var k1=0,k2=0;
+			for (var v = 0; v < this.map.length; v++) {
+				if (this.map[v].mvr==1) {
+					for (var w = 0; w < this.map[v].length; w++) {
+						this.map[v][w].style.top=w*(this.ew2+this.ew1)+0.03+"rem";
+						k2++;
+					}
+					k1++;
+				}
+			}
+			for (var i = 0; i < this.map.length; i++) {
+				this.map[i].mvr=0;
+			}
+			if (k1>0) {
+				this.alljudge0()
+			} else {
+				console.log("初始化结束");
+			}
+		}
+		POP.prototype.removeRev0=function (){
+			var dd=0;
+			for (var v = 0; v < this.map.length; v++) {
+				dd=0;
+				for (var w = this.map[0].length-1; w > -1; w--) {
+					if (this.map[v][w].rmv==1) {
+						for (var i = w+dd; i > -1; i--) {
+							this.map[v][i].style.top=(this.map[v][i].offsetTop-55)/100+"rem";
+							if (i>0) {
+								this.map[v][i].rdm=this.map[v][i-1].rdm;
+							} else if(i==0){
+								this.map[v][i].rdm=Math.floor(Math.random()*5);
+							}
+							this.creatPOP(this.map[v][i]);
+						}
+						this.map[v][w].rmv=0;
+						this.map[v].mvr=1;
+						dd++;
+					}
+				}
+			}
+			this.moveRev0();
+		}
+
+		
+
+		//自适应布局
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			Ww=document.documentElement.clientWidth;
+			bl=Ww/1366;
+			eleWidth1=5*bl;
+			eleWidth2=50*bl;
+			html.style.fontSize=bl*100+"px";
+		}
+		rem();
+		window.onresize=function (){
+			rem();
+		}
+
+		document.onmousemove=function (ev){
+			var ev=ev||window.enent;
+			ev.preventDefault?ev.preventDefault():ev.returnValue=false;
+		}
+	</script>
+</body>
+</html>

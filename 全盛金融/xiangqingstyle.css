@@ -1,0 +1,151 @@
+.con{
+	width: 100%；
+	margin:0 auto;
+	min-width: 1360px;
+}
+/*top*/
+.top{
+	background: url(images/g-bg.jpg) center center no-repeat;
+	overflow: hidden;
+	padding-top: 20px; 
+	width: 100%;	
+}
+.top1{
+	overflow: hidden;
+	width: 1366px;
+	margin:0 auto;
+}
+.top1left img{
+	float: left;
+	margin:  35px 0 ;
+}
+.top1right{
+	margin:   35px 0;
+}
+.top1right a{
+	color: #888585;
+	float: right;
+	border-bottom: 2px solid #67615f;
+	padding-right: 15px;
+	padding-left: 5px;
+}
+.top1right .a1{
+	border-bottom: 2px solid #d0000e;
+}
+
+.top2{
+	width: 100%;
+	background-color: #8d8e8f;
+	height: 60px;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+.top2 span{
+	padding-left: 20px;
+	display: block;
+	width: 1366px;
+	margin:0 auto;
+	line-height: 60px;
+	color: #d8d8d9;
+}
+
+
+/*center*/
+.center{
+	padding-top: 30px;
+	width: 1358px;
+	margin:0 auto;
+	padding-bottom: 100px;
+}
+.center1{
+	width: 510px;
+	height: 120px;
+	margin:0 auto;
+	line-height: 60px;
+}
+.center1 span{
+	color: #9b9b9b;
+	margin-right: 30px;
+}
+.center2{
+	overflow: hidden;
+	text-align: center;
+	padding-top: 30px;
+	width: 1220px;
+	margin:0 auto;
+	color: #9b9b9b;
+	line-height: 30px;
+}
+.center2 h4{
+	text-align: left;
+	line-height: 50px;
+	color: #000;
+}
+.center2 p{
+	text-indent: 2em;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 15px;
+}
+.center2 a{
+	float: left;
+	line-height: 20px;
+	color: #575757;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*foot*/
+.foot{
+	width: 100%;
+	margin:0 auto ;
+	border-top: 1px solid #dad7d7;
+}
+.footn{
+	margin:0 auto;	
+	overflow: hidden;
+	width: 1300px;
+	padding:50px 0 ;	
+}
+.footl{
+	padding-right: 45px;
+	float: left;
+	width: 190px;
+	height: 54px;
+	border-right: 3px solid #c63427;
+}
+.footr1{
+	float: right;
+	width: 67px;
+	height: 67px;
+	margin-left: 20px;
+
+}
+.footr2{
+	width: 550px;
+	overflow: hidden;
+	float: right;
+}
+.footr2 a{
+	overflow: hidden;
+	border-right: 1px solid #b4b5b5;
+	color: #b4b5b5;
+	margin-right: -3px;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: right;
+
+}
+.footr2 p{
+	float: right;
+	color: #b4b5b5;
+}

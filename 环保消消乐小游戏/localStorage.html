@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>locaStory</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./images/reset.css">
+	<style>
+		html{
+			font-size: 100px;
+		}
+		#start{
+			position: relative;
+			width: 13.66rem;
+			height: 10.8rem;
+			margin: -1rem auto 0;
+			background: url(./images/bg.jpg) 0 0 no-repeat;
+			background-size: 13.66rem 10.8rem;
+		}
+		#btn1{
+			border: none;
+			width: 3rem;
+			height: 0.8rem;
+			position: absolute;
+			top: 6rem;
+			left: 5.7rem;
+			background: url(./images/bg-01.png) 0 0 no-repeat;
+			background-size: 3rem 0.8rem;
+		}
+		#btn2{
+			border: none;
+			width: 3rem;
+			height: 0.8rem;
+			position: absolute;
+			top: 7.5rem;
+			left: 5.7rem;
+			background: url(./images/bg-02.png) 0 0 no-repeat;
+			background-size: 3rem 0.8rem;
+		}
+		#btn3{
+			border: none;
+			width: 3rem;
+			height: 0.8rem;
+			position: absolute;
+			top: 9rem;
+			left: 5.7rem;
+			background: url(./images/bg-03.png) 0 0 no-repeat;
+			background-size: 3rem 0.8rem;
+		}
+		#meng{
+			display: none;
+			width: 6rem;
+			height: 5rem;
+			position: absolute;
+			top: 5rem;
+			left: 4rem;
+			background-color: #7CFC00;
+			opacity: 0.5;
+			filter: Alpha(opcity = 50);
+		}
+		#ranking{
+			display: none;
+			width: 6rem;
+			height: 5rem;
+			position: absolute;
+			top: 5rem;
+			left: 4rem;
+			font-size: 0.16rem;
+			color: #1e3942;
+		}
+		#ranking li{
+			margin: 0.1rem;
+			width:3rem;
+			float: left; 
+		}
+		#ranking span{
+			display: block;
+			margin: 0 0.8rem;
+		}
+		#btn4{
+			border: none;
+			width: 2rem;
+			height: 0.5rem;
+			position: absolute;
+			bottom: 0.2rem;
+			left: 2rem;
+			background-size: 3rem 0.8rem;
+		}
+		#ul1{
+			width: 6rem;
+			/* background-color: #7CFC00; */
+		}
+		#ul1 li{
+			width: 5.8rem;
+			background-color: #ff0;
+			margin: 0.1rem 0;
+			padding-left: 0.2rem;
+		}
+	</style>
+</head>
+<body>
+	<div id="start">
+		<button id="btn1"></button>
+		<button id="btn2"></button>
+		<button id="btn3"></button>
+		<div id="meng"></div>
+		<div id="ranking">
+			<ul id="ul1">
+			</ul>
+			<button id="btn4">返回</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var start=document.getElementById('start');
+		var btn1=document.getElementById('btn1');
+		var btn2=document.getElementById('btn2');
+		var btn3=document.getElementById('btn3');
+		var btn4=document.getElementById('btn4');
+		var ranking=document.getElementById('ranking');
+		var ul1=document.getElementById('ul1');
+		btn1.onclick=function(){
+			window.open("./images/xiao2.html", "_self");
+		}
+		btn4.onclick=function(){
+			meng.style.display = "none";
+			ranking.style.display="none";
+		}
+		btn2.onclick=function(){
+			meng.style.display = "block";
+			ranking.style.display="block";
+			ul1.innerHTML="";
+			var arr=new Array();
+			for (var i = 0; i <localStorage.length; i++) {
+				// var name = localStorage.key(i);
+				arr.push(localStorage.key(i));
+			}
+			arr.sort(function(a,b){
+				return b-a;
+			})
+			for (var i = 10; i < arr.length; i++) {
+				for(var j=0;j <localStorage.length; j++){
+					var name = localStorage.key(j);
+					if(localStorage.getItem(name)==arr[i]){
+						localStorage.removeItem(name);
+					}
+				}
+			}
+			for (var i = 0; i <localStorage.length; i++) {
+					var name = localStorage.getItem(arr[i]);
+					// console.log(name);
+					var newli = document.createElement("li");
+					newli.innerHTML = name + " : " + Math.floor(arr[i]);
+					ul1.appendChild(newli);
+			}	
+		}
+		//自适应布局
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			Ww=document.documentElement.clientWidth;
+			bl=Ww/2000;
+			html.style.fontSize=bl*100+"px";
+		}
+		rem();
+		window.onresize=function (){
+			rem();
+		}
+	</script>
+</body>
+</html>

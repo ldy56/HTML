@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="./css/reset.css">
+	<script src="./jquery/jquery.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		.outer{
+
+			margin: 0 auto;
+			width: 7.5rem;
+			height: 12.16rem;
+			background: url(./img/shouye/bg_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.con1{
+			overflow: hidden;
+			height: 2.94rem;
+			padding-top: 0.06rem;
+			margin-right:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu1{
+			
+			background: url(./img/shouye/img_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			float: right;
+		}
+		.tu1 img{
+			margin-top:0.71rem ;
+			margin-left: 0.56rem;
+			margin-bottom: 0.20rem;
+			width: 1.34rem;
+			height: 1.12rem;
+		}
+		.tu1 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #706e6e;
+		}
+		.con2{
+			overflow: hidden;
+			height: 2.94rem;
+			margin-right:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu2{
+			background: url(./img/shouye/img_2@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			float: right;
+
+		}
+		.tu2 img{
+			margin-top:0.81rem ;
+			margin-left: 0.54rem;
+			margin-bottom: 0.18rem;
+			width: 1.40rem;
+			height: 1.08rem;
+		}
+		.tu2 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #fff;
+			opacity: 0.8;
+		}
+		.con3{
+			padding-top:0.06rem ;
+			overflow: hidden;
+			height: 2.94rem;
+			margin-left:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu3{
+			background: url(./img/shouye/img_3@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			float: left;
+
+		}
+		.tu3 img{
+			margin-top:0.55rem ;
+			margin-left: 0.58rem;
+			margin-bottom: 0.17rem;
+			width: 1.22rem;
+			height: 1.35rem;
+		}
+		.tu3 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #706e6e;
+			opacity: 0.8;
+		}
+		.con4{
+			position: relative;
+			overflow: hidden;
+			height: 2.94rem;
+			margin-left:0.06rem;
+			margin-bottom:0.06rem;
+		}
+		.tu4{
+			background: url(./img/shouye/img_4@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+
+		}
+		.tu4 img{
+			margin-top:0.78rem ;
+			margin-left: 0.55rem;
+			margin-bottom: 0.17rem;
+			width: 1.36rem;
+			height: 1.14rem;
+		}
+		.tu4 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #fff;
+			opacity: 0.8;
+		}
+		.tu5{
+			margin-left: 0.06rem;
+			background: url(./img/shouye/img_5@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+			width: 2.42rem ;
+			height: 2.94rem;
+			position: absolute;
+			left:2.48rem ;
+			top: 0;
+
+		}
+		.tu5 img{
+			margin-top:0.68rem ;
+			margin-left: 0.60rem;
+			margin-bottom: 0.14rem;
+			width: 1.24rem;
+			height: 1.24rem;
+		}
+		.tu5 h3{
+			font-size: 0.26rem;
+			text-align: center;
+			color: #fff;
+			opacity: 0.8;
+		}
+	</style>
+</head>
+<body> 
+	<div class="outer" id="outer">
+		<div class="con1">
+			<div class="tu1" id="tu1">
+				<img src="./img/shouye/btn_1_n@2x.png" alt="">
+				<h3>产品中心</h3>
+			</div>
+		</div>
+		<div class="con2">
+			<div class="tu2" id="tu2">
+				<img src="./img/shouye/btn_2_n@2x.png" alt="">
+				<h3>组织活动</h3>
+			</div>
+		</div>
+		<div class="con3">
+			<div class="tu3" id="tu3">
+				<img src="./img/shouye/btn_3_n@2x.png" alt="">
+				<h3>发布文章</h3>
+			</div>
+		</div>
+		<div class="con4">
+			<div class="tu4" id="tu4">
+				<img src="./img/shouye/btn_4_n@2x.png" alt="">
+				<h3>我要接单</h3>
+			</div>
+			<div class="tu5" id="tu5">
+				<img src="./img/shouye/btn_5_n@2x.png" alt="">
+				<h3>分享活动</h3>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var Ww=document.documentElement.clientWidth;
+			var scale=Ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+
+		window.onresize=function(){
+			rem();
+		}
+
+		/*设置cookie*/
+
+		function setCookie(key,value,day){
+			var date=new Date();
+			date.setDate(date.getDate()+day);
+			document.cookie=key+"="+value+";expires="+date;
+		}
+		/*四周扩散*/
+
+		function move(){
+			$("#tu1").animate({
+				"margin-top":"-3rem"
+			},1000)
+			$("#tu2").animate({
+				"margin-right":"-2.48rem"
+			},1000)
+			$("#tu3").animate({
+				"margin-left":"-2.48rem"
+			},1000)
+			$("#tu4").animate({
+				"margin-left":"-2.48rem"
+			},1000)
+			$("#tu5").animate({
+				"top":"3rem",
+			},1000)
+		}
+		$(function(){
+			$("#tu1").click(function(){
+				move()
+				/*$("#outer").animate({
+					"opacity":"0.3"
+				},1000,function(){
+						window.open("./fabuwenzhang.html","_self")
+				})*/
+				$("#outer").fadeOut(1000,function(){
+					window.open("./sheyingZS.html","_self")	
+				})	
+			})
+			$("#tu2").click(function(){
+				move()
+				setCookie("tu2","2",3);
+				$("#outer").fadeOut(1000,function(){
+					window.open("./fabuwenzhang.html","_self")
+				})	
+			})
+			$("#tu3").click(function(){
+				move()
+				$("#outer").fadeOut(1000,function(){
+					window.open("./fabuwenzhang.html","_self")
+				})	
+			})
+			$("#tu4").click(function(){
+				move()
+				$("#outer").fadeOut(1000,function(){
+					window.open("./gongdan.html","_self")	
+				})	
+			})
+			$("#tu5").click(function(){
+				move()
+				setCookie("tu5","5",3);
+				$("#outer").fadeOut(1000,function(){
+					window.open("./fabuwenzhang.html","_self")
+				})	
+			})
+			/*$("#tu1").click(function(){
+				$("#tu1").animate({
+					"margin-top":"-3rem"
+				},1000)
+				$("#tu2").animate({
+					"margin-right":"-2.48rem"
+				},1000)
+				$("#tu3").animate({
+					"margin-left":"-2.48rem"
+				},1000)
+				$("#tu4").animate({
+					"margin-left":"-2.48rem"
+				},1000)
+				$("#tu5").animate({
+					"top":"3rem",
+				},1000)
+				$("#outer").fadeOut(1000,function(){
+
+				})
+			})*/
+
+
+
+
+		})
+	</script>
+</body>
+</html>

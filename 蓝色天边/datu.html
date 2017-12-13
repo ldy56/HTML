@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./css/reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		body{
+			width: 7.5rem;
+			height: 100%;
+			background: url(./img/datu/bg_2@2x.png) 0 0 no-repeat;
+			background-size: 100% 100%;
+		}
+		.outer{
+			width: 7.5rem;	
+		}
+		.head{
+			height: 0.88rem;
+			text-align: center;
+			font-size: 0.34rem;
+			color: #fff;
+			line-height: 0.88rem;
+			background: url(./img/denglu/bg_1@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: relative;
+		}
+		#hui{
+			width: 0.24rem;
+			height: 0.41rem;
+			background: url(./img/denglu/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			left: 0.2rem;
+			top: 0.23rem;
+		}
+		.con{
+			width: 7.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 0.01rem solid #313131;
+		}
+		.con-img{
+			margin-top: 2.5rem;
+			margin-bottom: 2.4rem;
+			width: 7.5rem;
+			height: 4.4rem;
+		}
+		.con img{
+			width: 7.5rem;
+			height: 4.4rem;
+		}
+		p{
+			width: 7.2rem;
+			color: #fff;
+			font-size: 0.26rem;
+			padding-left: 0.3rem;
+		}
+		.foot{
+			height: 1.27rem;
+			overflow: hidden;
+			color: #fff;
+		}
+		.foot span{
+			float: left;
+			margin-left: 0.23rem;
+			margin-top: 0.24rem;
+		}
+		#ye{
+			font-size: 0.48rem;
+		}
+		#zong{
+			font-size: 0.3rem;
+		}
+		#dianz,#fangda{
+			width: 1.07rem;
+			height: 0.46rem;
+			line-height: 0.46rem;
+			color: #fff;
+			font-size: 0.26rem;
+			border: 0.01rem solid #313131;
+			border-radius: 0.05rem;
+			float: right;
+			margin-top: 0.27rem;
+			margin-right: 0.2rem;
+			padding-left: 0.24rem;
+			background: url("./img/datu/img_3@2x.png") 0.9rem 0.08rem no-repeat;
+			background-size: 0.3rem 0.3rem;
+		}
+		#fangda{
+			background: url("./img/datu/img_2@2x.png") 0.9rem 0.08rem no-repeat;
+			background-size: 0.3rem 0.3rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			漂亮珍珠手链
+			<div id="hui"></div>
+		</div>
+		<div class="con">
+			<div class="con-img">
+				<img src="./img/datu/img_5@2x.png" alt="">
+			</div>
+			<p>摄影是指使用某种专门设备进行影像记录的过程，一般我们使用机械照相机或者数码照相机进行摄影。摄影是指使用某种专门设备进行影像记录的过程，一般我们使用机械照相机或者数码照相机进行摄影。</p>
+		</div>
+		<div class="foot">
+			<span><strong id="ye">1</strong>/<em id="zong">20</em></span>
+			<div id="dianz">点赞</div>
+			<div id="fangda">原图</div>
+		</div>
+	</div>
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var ww=document.documentElement.clientWidth;
+			var scale=ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+		window.onresize=function(){
+			rem();
+		}
+		
+		$(function(){
+			$("#hui").click(function(){
+				history.back();
+			})
+			var a=0;
+			$("#fangda").click(function(){
+				a++;
+				if (a==1) {
+					$("img").eq(0).css({
+						"transform":"scale(1.5,1.5)"
+					})
+				};
+				if (a==2) {
+					$("img").eq(0).css({
+						"transform":"scale(2,2)"
+					})
+				};
+				if (a==3) {
+					a=0;
+					$("img").eq(0).css({
+						"transform":"scale(1,1)"
+					})
+				};
+			})
+		})
+	</script>
+</body>
+</html>

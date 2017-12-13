@@ -1,0 +1,488 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="./css/reset.css">
+	<script src="./jquery/jquery.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		.outer{
+			margin: 0 auto;
+			width: 7.5rem;
+		}
+		.top{
+			overflow: hidden;
+			height: 0.88rem;
+			background: url(./img/fabu/bg_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.left{
+			height: 0.88rem ;
+			float: left;
+			margin-left: 0.2rem;
+			margin-right: 0.36rem;
+		}
+		.left img{
+			margin-top: 0.24rem;
+			width: 0.24rem;
+			height: 0.41rem;
+		}
+		.nav{
+			float: left;
+			margin-top: 0.16rem;
+			width: 5.66rem;
+			height: 0.54rem;
+			background: url(./img/fabu/img_6@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.nav input{
+			border: none;
+			border-radius:0.3rem ;
+			padding-left: 1.8rem;
+			width: 3.87rem;
+			height: 0.54rem;
+			font-size: 0.24rem;
+			color: #aaa;
+			background: url(./img/fabu/img_7@2x.png) 1.49rem center no-repeat;
+			background-size: 0.26rem 0.24rem;
+		}
+		.right{
+			float: left;
+			width:0.54rem ;
+			height:0.54rem ;
+			margin-left:0.24rem ;
+			margin-top:0.16rem ;
+		}
+		.right img{
+			width:0.54rem ;
+			height:0.54rem ;
+		}
+		.tit{
+			padding:0 0.34rem;
+			height: 0.88rem;
+			background: url(./img/fabu/bg_2@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.titouter{
+			width: 8rem;
+			height: 0.88rem;
+			overflow: hidden;
+		}
+		.titouter span{
+			padding:0.2rem 0 ;
+			float: left;
+			margin-right: 0.44rem;
+			font-size: 0.34rem;
+			
+		}
+		.select{
+			color: #008ccf;
+			border-bottom:0.02rem solid #008ccf;
+		}
+		.conouter{
+			width: 7.5rem;
+			position: relative;
+		}
+		.con{
+			width: 7.1rem ;
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			padding: 0.2rem ;
+			background: #efefef;
+			display: none;
+		}
+		.conouter .show{
+			display: block;
+		}
+		.con-left{
+			float: left;
+			width: 3.45rem;
+
+		}
+		.con-left1{
+			background: white;
+			margin-bottom: 0.2rem;
+		}
+		
+		#img1{
+			width: 3.45rem;
+			height: 1.94rem;
+		}
+		.con-left1-foot{
+			padding-bottom: 0.15rem;
+			overflow: hidden;
+		}
+		.con-left1-foot img{
+			margin: 0.17rem 0.09rem 0rem 0.15rem;
+			width:0.65rem ;
+			height:0.65rem ;
+			float: left;
+		}
+		.con-left1-foot p{
+			
+			margin-top: 0.18rem;
+			margin-bottom:0.06rem;
+			font-size:0.22rem ;
+			color: #373737;
+		}
+		.con-left1-foot span{
+			
+			font-size:0.21rem ;
+			color: #aaa;
+		}
+		#img2{
+			width: 3.45rem;
+			height: 1.95rem;
+		}
+		.con-right{
+			float: right;
+			width: 3.45rem;
+		}
+		#img3{
+			width:3.45rem ;
+			height: 5rem;
+		}
+		#img4{
+			width:3.45rem ;
+			height: 3.8rem;
+		}
+		.caidan{
+			width: 0.9rem;
+			height: 0.9rem;
+			position: fixed;
+			left: 0.2rem;
+			bottom: 0.3rem;
+			background: url(./img/fabu/btn_2_n@2x.png)0 0 no-repeat;
+			background-size:100% 100% ;
+
+		}
+		.caidan img{
+			display: none;
+			width: 0.6rem;
+			height: 0.6rem;
+			position: absolute;
+			left: 0.15rem;
+			top: 0.15rem;
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="top">
+			<div class="left">
+				<img src="./img/fabu/btn_3_n@2x.png" alt="">
+			</div>
+			<div class="nav">
+				<input type="text" name="" value="搜索会员或关键字">	
+			</div>
+			<div class="right">
+				<img src="./img/fabu/btn_1_n@2x.png" alt="">
+			</div>
+		</div>
+		<div class="tit">
+			<div class="titouter">
+				<span class="select">摄影展示</span>
+				<span>设计作品</span>
+				<span>技术教程</span>
+				<span>会员展示</span>
+			</div>
+		</div>
+		<div class="conouter">
+			<div class="con">
+					<div class="con-left">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu1.jpg" alt="" id="img1">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu2.jpg" alt="" id="img2">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						111
+					</div>
+					<div class="con-right">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu3.jpg" alt="" id="img3">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu4.jpg" alt="" id="img4">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="con">
+					<div class="con-left">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu1.jpg" alt="" id="img1">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu2.jpg" alt="" id="img2">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						222
+					</div>
+					<div class="con-right">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu3.jpg" alt="" id="img3">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu4.jpg" alt="" id="img4">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="con">
+					<div class="con-left">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu1.jpg" alt="" id="img1">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu2.jpg" alt="" id="img2">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						333
+					</div>
+					
+					<div class="con-right">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu3.jpg" alt="" id="img3">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu4.jpg" alt="" id="img4">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="con">
+					<div class="con-left">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu1.jpg" alt="" id="img1">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu2.jpg" alt="" id="img2">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						444
+					</div>
+					<div class="con-right">
+						<div class="con-left1">
+							<img src="./img/fabu/fabu3.jpg" alt="" id="img3">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+						<div class="con-left1">
+							<img src="./img/fabu/fabu4.jpg" alt="" id="img4">
+							<div class="con-left1-foot">
+								<img src="./img/fabu/IMG_3@2x.png" alt="">
+								<p>拍摄珠宝的正确方式</p>
+								<span>蓝色天边</span>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+		
+		<div class="caidan" id="caidan">
+			
+				<img src="./img/fabu/btn_7_n@2x.png" alt="" id="caidan1">
+				<img src="./img/fabu/btn_6_n@2x.png" alt="" id="caidan2">
+				<img src="./img/fabu/btn_5_n@2x.png" alt="" id="caidan3">
+				<img src="./img/fabu/btn_4_n@2x.png" alt="" id="caidan4">
+			
+		</div>
+	</div>
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var Ww=document.documentElement.clientWidth;
+			var scale=Ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+
+		window.onresize=function(){
+			rem();
+		}
+
+		/*获取cookie*/
+		function setCookie(key,value,day){
+			var date=new Date();
+			date.setDate(date.getDate()+day);
+			document.cookie=key+"="+value+";expires="+date;
+		}
+		function getCookie(key) {
+          var arr=document.cookie.split("; ");
+          for (var i = 0; i < arr.length; i++) {
+            var newarr=arr[i].split('=');
+            if (newarr[0]==key) {
+              return newarr[1];
+            }
+          }
+        }
+    function removeCookie(key) {
+          setCookie(key,"0",-1);
+        }
+  	/*点击跳转到Tab*/
+    $(function(){
+     if (getCookie("tu1")==1) {
+     		$(".conouter>div:eq(2)").css({"display":"block"}).siblings().css({"display":"none"});
+     		removeCookie("tu1")
+     };
+     
+
+
+		
+
+
+
+
+			/*Tab       */
+			$(".conouter>div:eq(0)").css({"display":"block"})
+			$(".titouter span").click(function(){
+				var i=$(this).index();
+				$(this).addClass("select").siblings().removeClass("select");
+				$(".conouter>div:eq("+i+")").css({"display":"block"}).siblings().css({"display":"none"})
+			})
+
+
+			/*点击散开*/
+			var a=0
+			$("#caidan").click(function(ev){
+				var ev=ev||window.event;
+				if(ev.stopPropagation){
+					ev.stopPropagation()
+				}else{
+					ev.cancelBubble=true
+				}
+				if(a==0){
+					$(".caidan img").css({
+						"display":"block"
+					})
+					$("#caidan1").animate({
+						"top":"-1.25rem",
+						"left":"0"
+					},300)
+					$("#caidan2").animate({
+						"top":"-1.05rem",
+						"left":"0.84rem"
+					},300)
+					$("#caidan3").animate({
+						"top":"-0.45rem",
+						"left":"1.44rem"
+					},300)
+					$("#caidan4").animate({
+						"top":"0.3rem",
+						"left":"1.55rem"
+					},300)
+					a=1
+				}else{
+						$(".caidan img").animate({
+						"top":"0.15rem",
+						"left":"0.15rem"
+					},300,function(){
+						$(".caidan img").css({
+						"display":"none"
+							})
+					})
+					a=0
+				}
+			})
+			/*合并*/
+			window.onclick=function(ev){
+				var ev=ev||window.event;
+				if(ev.stopPropagation){
+					ev.stopPropagation()
+				}else{
+					ev.cancelBubble=true
+				}
+				$(".caidan img").animate({
+					"top":"0.15rem",
+					"left":"0.15rem"
+				},300,function(){
+					$(".caidan img").css({
+					"display":"none"
+						})
+				})
+				a=0
+			}
+
+
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./css/reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+			height: 100%;
+		}
+		body{
+			height: 100%;
+			background: #f0f0f0;
+		}
+		.outer{
+			width: 7.5rem;
+		}
+		.head{
+			width: 7.5rem;
+			height: 0.88rem;
+			text-align: center;
+			font-size: 0.34rem;
+			color: #fff;
+			line-height: 0.88rem;
+			background: url(./img/denglu/bg_1@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: relative;
+		}
+		#hui{
+			width: 0.24rem;
+			height: 0.41rem;
+			background: url(./img/denglu/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			left: 0.2rem;
+			top: 0.23rem;
+		}
+		#xiugai{
+			float: right;
+			margin-right: 0.2rem;
+		}
+		ul{
+			width: 7.5rem;
+			background: #fff;
+		}
+		ul li{
+			width: 7.3rem;
+			color: #373737;
+			font-size: 0.26rem;
+			border-top: 0.01rem solid #ccc;
+			padding-left: 0.2rem;
+			overflow: hidden;
+		}
+		li:nth-child(1){
+			height: 2rem;
+			line-height: 2rem;
+			border: none;
+		}
+		.touxiang{
+			width: 1.1rem;
+			height: 1.1rem;
+			margin-top: 0.45rem;
+			margin-bottom: 0.45rem;
+			border-radius: 50%;
+			float: right;
+			overflow: hidden;
+		}
+		.touxiang img{
+			width: 1.1rem;
+			height: 1.1rem;
+			float: right;
+		}
+		#ip1{
+			display: none;
+		}
+		li:not(.tx){
+			height: 0.86rem;
+			line-height: 0.86rem;
+		}
+		li input{
+			width: 2rem;
+			float: right;
+			font-size: 0.26rem;
+			color: #9a9a9a;
+			margin-top: 0.3rem;
+			margin-right: 0.4rem;
+			text-align: right;
+			border: none;
+			background-color: transparent;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			个人信息
+			<div id="hui"></div>
+			<span id="xiugai">修改</span>
+		</div>
+		<ul>
+			<li class="tx">
+				头像
+				<div class="touxiang">
+					<img src="./img/mytx/IMG_3@2x.png" alt="">
+				</div>
+				<input type="file" id="ip1">
+			</li>
+			<li>
+				昵称
+				<input type="text" name="" value="蓝色天边">
+			</li>
+			<li>
+				性别
+				<input type="text" name="" value="男">
+			</li>
+			<li>
+				年龄
+				<input type="text" name="" value="28">
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var ww=document.documentElement.clientWidth;
+			var scale=ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+		window.onresize=function(){
+			rem();
+		}
+
+		$(function(){
+			$("input").attr("disabled","disabled");
+			$("#xiugai").on("touchstart",function(){
+				if ($("input").attr("disabled")) {
+					$("input").removeAttr("disabled");
+				}else{
+					$("input").attr("disabled","disabled");
+				}
+				$(".touxiang").on("touchstart",function(){
+					$("#ip1").click();
+				})
+			});
+			$("#hui").on("touchstart",function(){
+				history.back();
+			});
+			$("input[type='file']").change(function(){   
+				var file = this.files[0];
+			   	if (window.FileReader) {    
+		            var reader = new FileReader();    
+		            reader.readAsDataURL(file);      
+		          reader.onloadend = function (e) {
+		            $("#img1").attr("src",e.target.result);
+		            };    
+			    } 
+			});
+		});
+	</script>
+</body>
+</html>

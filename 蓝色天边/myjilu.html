@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./css/reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+			height: 100%;
+		}
+		body{
+			height: 100%;
+			background: #f0f0f0;
+		}
+		.outer{
+			width: 7.5rem;
+		}
+		.head{
+			width: 7.5rem;
+			height: 0.88rem;
+			text-align: center;
+			font-size: 0.34rem;
+			color: #fff;
+			line-height: 0.88rem;
+			background: url(./img/denglu/bg_1@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: relative;
+		}
+		#hui{
+			width: 0.24rem;
+			height: 0.41rem;
+			background: url(./img/denglu/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			left: 0.2rem;
+			top: 0.23rem;
+		}
+		ul{
+			width: 7.5rem;
+			background: #fff;
+		}
+		li{
+			width: 7.15rem;
+			height: 1.1rem;
+			padding-left: 0.35rem;
+		}
+		li p{
+			color: #373737;
+			font-size: 0.26rem;
+			padding-top: 0.25rem;
+			padding-bottom: 0.05rem;
+		}
+		.date{
+			color: #c6c6c6;
+			font-size: 0.18rem;
+		}
+		.date i{
+			margin-left: 0.2rem;
+			font-style: normal;
+		}
+		li em{
+			color: red;
+			margin-right: 0.1rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="head">
+			我的记录
+			<div id="hui"></div>
+		</div>
+		<ul>
+			<li>
+				<p>拍摄珠宝的正确方式</p>
+				<span class="date"></span>
+			</li>
+			<li>
+				<p>拍摄珠宝的正确方式</p>
+				<span class="date"></span>
+			</li>
+			<li>
+				<p>拍摄珠宝的正确方式</p>
+				<span class="date"></span>
+			</li>
+			<li>
+				<p>拍摄珠宝的正确方式</p>
+				<span class="date"></span>
+			</li>
+			<li>
+				<p>拍摄珠宝的正确方式</p>
+				<span class="date"></span>
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var ww=document.documentElement.clientWidth;
+			var scale=ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+		window.onresize=function(){
+			rem();
+		}
+
+		var nowDate=new Date();
+		var year=nowDate.getFullYear();
+		var month=nowDate.getMonth()+1;
+		var day=nowDate.getDate();
+		var hour=nowDate.getHours();
+		var minu=nowDate.getMinutes();
+		var sec=nowDate.getSeconds();
+		var misec=nowDate.getMilliseconds();
+		if (month<10) {
+			month="0"+month;
+		}
+		if (day<10) {
+			day="0"+day;
+		}
+		if (hour<10) {
+			hour="0"+hour;
+		}
+		if (minu<10) {
+			minu="0"+minu;
+		}
+
+		$(function(){
+			$("#hui").on("touchstart",function(){
+				history.back();
+			});
+			$(".date").html(`${year}.${month}.${day}<i>${hour}: ${minu}</i>`);
+		})
+	</script>
+</body>
+</html>

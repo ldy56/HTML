@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>蓝色天边涂像空间</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="./css/reset.css">
+	<script src="./jquery/jquery.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		.outer{
+			margin: 0 auto;
+			width: 7.5rem;
+			/* background: #f0f0f0; */
+		}
+		.top{
+			text-align: center;
+			overflow: hidden;
+			height: 0.66rem;
+			padding-top: 0.22rem;
+			background: url(./img/wodexiangce/bg_1@2x.png) 0 0 no-repeat;
+			background-size:100% 100% ;
+		}
+		.top-left{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-left: 0.2rem;
+			float: left;
+			background: url(./img/wodexiangce/btn_1_n@2x.png) 0 0 no-repeat;
+			background-size: 0.24rem 100%;
+		}
+		.top-right{
+			width: 0.45rem;
+			height: 0.41rem;
+			margin-right: 0.2rem;
+			float: right;
+			/* background: url(./img/xiangxiNR/btn_3_n@2x.png) 0 0 no-repeat;
+			background-size: 100% 100%; */
+		}
+		.top span{
+			font-size: 0.3rem;
+			color: white;
+			letter-spacing: 0.02rem;
+		}
+		.con{
+			padding:0.45rem 0.22rem 2.8rem;
+		}
+		.con-top{
+
+		}
+		.con-top h3{
+			text-align: center;
+			font-size: 0.3rem;
+			color: #373737;
+			margin-bottom: 0.5rem;
+		}
+		.con-top p{
+			text-indent: 2em;
+			font-size: 0.26rem;
+			color: #373737;
+			
+		}
+		.con1{
+			margin-top: 0.4rem;
+		}
+		.con1 p{
+			font-size: 0.26rem;
+			color: #373737;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="top">
+			<div class="top-left"></div>
+			<span>提现攻略</span>
+			<div class="top-right"></div>
+		</div>
+		<div class="con">
+			<div class="con-top">
+				<h3>公众号协议</h3>
+				<p>为了保证发布设计或摄影的需求方和接受需求的会员方利益，在此制定以下协议，请双方认真阅读后在进行定夺。</p>
+			</div>
+			<div class="con1">
+				<p>一、发布需求方协议</p>
+				<p>1.需求方应发布真实有效的项目需求，并详细写明需求内容。</p>
+				<p>2.发布需求后应在5个工作日内将需求 奖金汇入公众微信号制定账户，并在汇款成功后48小时后开始进行工作</p>
+				<p>3.项目完成后应及时在发布信息内告知项目完成，通知公众微信号将奖金转付给完成该项目的会员。</p>
+				<p>4.如会员完成项目效果未达到需求方要求，应及时声明情况重新选择其他会员完成该项目，并声明永不采用未选中的完成效果，否则双倍赔偿。</p>
+			</div>
+			<div class="con1">
+				<p>二、接受需求会员方协议</p>
+				<p>1.接受需求会员方应认真完成需求方发布的工作内容，并在需求方指定时间内交付任务。</p>
+				<p>2.会员方完成工作后应及时提醒需求方验收工作结果。</p>
+				<p>3.需求方验收工作结束后，会员方应及时在发布信息内通知公众微信号管理方转付奖金。</p>
+				<p>4.如果会员方未能按时保质保量的完成需求方工作，则不应接收任何奖金。</p>
+				<p>5.如会员方所完成的工作与需求方验收结果有争议，应及时说明情况，与需求方协商解决。</p>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		function rem(){
+			var html=document.getElementsByTagName('html')[0];
+			var Ww=document.documentElement.clientWidth;
+			var scale=Ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem();
+
+		window.onresize=function(){
+			rem();
+		}
+		
+		$(function(){
+			$(".top-left").on("touchstart",function(){
+				history.back();
+			})
+			
+		})
+	</script>
+</body>
+</html>

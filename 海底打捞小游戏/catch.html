@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>fish</title>
+	<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	html{
+		font-size: 40px;
+		color: white;
+		font-family: "Microsoft YaHei"
+	}
+	body{
+		width: 100%;
+		height: 100%;
+		background: url(./img/bg.png)0 0 no-repeat;
+		background-size: 100%; 
+	}
+	#outer{
+		width: 1198px;
+		height: 798px;
+		margin: 0 auto;
+		position: absolute;
+		overflow: hidden;
+		background: url(./img/bac.png)0 0 no-repeat;
+		background-size: 1198px 798px;
+		overflow: hidden;
+		left: 50%;
+		top: 50%;
+		transform:translateX(-50%) translateY(-50%);
+	}
+	#head{
+		width: 1198px;
+		height: 98px;
+		margin-bottom: 100px;
+	}
+	#mygrade{
+		width: 400px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		float: left;
+		background-color: rgb(28,117,175);
+	}
+	#mytime{
+		width: 400px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		float: right;
+		background-color: rgb(28,117,175);
+	}
+	#hand{
+		width: 80px;
+		height: 92px;
+		position: absolute;
+		left: 50%;
+		top: 0;
+		transform-origin: top center;
+	}
+	#mouse{
+		width: 80px;
+		height: 931px;
+		position: absolute;
+		background: url(./img/myhand.png)center center no-repeat;
+		bottom: 0px;
+		left: 0px;
+	}
+	#con{
+		width: 1198px;
+		height: 600px;
+	}
+	#con .moveli{
+		width: 1198px;
+		height: 80px;
+		position: relative;
+		margin-top: 20px;
+	}
+	.rb2{
+		position: absolute;
+		width: 76px;
+		height: 78px;
+		background: url("./img/rb2.png")center center no-repeat;
+		background-size: 76px 78px;
+	}
+	.rb1{
+		position: absolute;
+		width: 76px;
+		height: 66px;
+		background: url("./img/rb1.png")center center no-repeat;
+		background-size: 76px 66px;
+	}
+	.rb3{
+		position: absolute;
+		width: 60px;
+		height: 88px;
+		background: url("./img/rb3.png")center center no-repeat;
+		background-size: 60px 88px;
+	}
+	.rb4{
+		position: absolute;
+		width: 74px;
+		height: 58px;
+		background: url("./img/rb4.png")center center no-repeat;
+		background-size: 74px 58px;
+	}
+	.fishl{
+		position: absolute;
+		width: 64px;
+		height: 58px;
+		background: url("./img/fishl.png")center center no-repeat;
+		background-size: 64px 58px;
+	}
+	.fishr{
+		position: absolute;
+		width: 64px;
+		height: 58px;
+		background: url("./img/fishr.png")center center no-repeat;
+		background-size: 64px 58px;
+	}
+	.gift{
+		position: absolute;
+		width: 76px;
+		height: 46px;
+		background: url("./img/giftbt.png")center center no-repeat;
+		background-size: 76px 46px;
+	}
+	#havecatch{
+		position: absolute;
+	}
+	#begin,#over{
+		width: 1198px;
+		height: 798px;
+		margin: 0 auto;
+		position: absolute;
+		overflow: hidden;
+		background: url(./img/back-g.png)0 0 repeat;
+		left: 50%;
+		top: 50%;
+		transform:translateX(-50%) translateY(-50%);
+	}
+	#begin{
+		display: block;
+		font-size: 80px;
+		color: rgb(0,186,235);
+		text-shadow: 10px 10px 10px rgb(62,101,194);
+		line-height: 800px;
+		text-align: center;
+	}
+	#over{
+		line-height: 400px;
+		text-align: center;
+		display: none;
+	}
+	 #over input{
+		display: block;
+		width: 800px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		position: absolute;
+		left: 15%;
+		font-size: 40px;
+		color: #000;
+		font-family: "Microsoft YaHei";
+		display: none;
+	} 
+	#buttony,#buttonn{
+		width: 380px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		background-color: rgb(43,136,185);
+	}
+	#buttony{
+		position: absolute;
+		bottom: 10%;
+		left: 15%;
+	}
+	#buttonn{
+		position: absolute;
+		bottom: 10%;
+		right: 15%;
+	}
+	</style>
+</head>
+<body>	
+	<div id="outer">
+	<div id="head">
+		<div id="mygrade"></div>
+		<div id="hand">
+			<div id="mouse"></div>
+		</div>
+		<div id="mytime"></div>
+	</div>
+	<ul id="con">
+		<li class="moveli"></li>
+		<li class="moveli"></li>
+		<li class="moveli"></li>
+		<li class="moveli"></li>
+		<li class="moveli"></li>
+		<li class="moveli"></li>
+	</ul>
+	<div id="begin">马上开始！</div>
+	<div id="over">
+		<p></p>
+		<input type="text" placeholder="请输入您的姓名"></input>
+		<div id="buttony">确定</div>
+		<div id="buttonn">取消</div>
+	</div>
+	</div>
+	<script>
+		var hand=document.getElementById('hand');
+		var outer=document.getElementById('outer');
+		var con=document.getElementById('con');
+		var lis=con.getElementsByTagName('li');
+		var mytime=document.getElementById('mytime');
+		var mygrade=document.getElementById('mygrade');
+		var gradelist=document.getElementById('gradelist');
+		var btn=document.getElementsByTagName('button');
+		var mouse=document.getElementById('mouse');
+		var begingame=document.getElementById('begin');
+		var overgame=document.getElementById('over');
+		var rastop=1,longing=1,rotatime=null,jiaodu=0,hudu=0,mt=90,mg=0,speed,refreshr=0,begin=false;
+		var gradearr=[];
+		setTimeout(function() {
+			begingame.style.display="none";
+			begin=true;
+			rota();
+		},2000)
+		rota();
+		mytime.innerHTML="剩余时间"+mt+"秒";
+		mygrade.innerHTML="分数"+mg;
+		outer.onclick=function() {
+			rastop=0;
+			rota()
+		}
+
+		function rota() {
+			if(begin==false){
+				return false;
+			}
+			clearInterval(rotatime)
+			var x=jiaodu;
+			var a=1;
+			if(rastop==1){
+				rotatime=setInterval(function() {
+					if (x>=65) {
+					a=-1;
+					}
+					if(x<=-65){
+						a=1;
+					}
+					if(a==1){
+						x+=0.3;
+					}
+					if(a==-1){
+						x-=0.3;
+					}
+					hand.style.transform=`rotate(${x}deg)`;
+					jiaodu=x;
+					hudu=Math.abs(jiaodu)*Math.PI/180;
+				},1);
+			}
+			if(rastop==0){
+			clearInterval(rotatime);
+			long();
+			}
+		}
+
+		function long() {
+			if(begin==false){
+				return false;
+			}
+			if(longing){
+				var x=0;
+				var los=1;
+				longing=0;
+				var longtime=setInterval(function () {
+					hudu=Math.abs(jiaodu)*Math.PI/180;
+					if((Math.abs(x)+hand.offsetHeight)*Math.sin(hudu)>=0.5*outer.offsetWidth){
+						los=0;
+					}else{
+						if((Math.abs(x)+hand.offsetHeight)*Math.cos(hudu)>=outer.offsetHeight){
+							los=0;
+						}
+					}
+					if(los==1&&catchboolean(x,x)==false){
+						los=0;
+					}
+					if(los==1){
+						speed=0.8;
+						x-=1.5*speed;
+						mouse.style.bottom=x+"px";
+					}
+					if(los==0){
+						if(mouse.children[0]){
+							if(mouse.children[0].className=="rb2"){
+								x+=speed*0.2;
+							}else if(mouse.children[0].className=="rb1"){
+								x+=speed*0.8;
+							}else if(mouse.children[0].className=="rb4"){
+								x+=speed*0.8;
+							}else if(mouse.children[0].className=="rb3"){
+								x+=speed*0.6;
+							}else if(mouse.children[0].className=="fishl"||mouse.children[0].className=="fishr"){
+								x+=speed*0.8;
+							}else if(mouse.children[0].className=="gift"){
+								x+=speed*0.5;
+							}
+						}else{
+							x+=1.5*speed;
+						}
+						mouse.style.bottom=x+"px";
+						if(x>=0){
+							if(mouse.children[0]){
+								if(mouse.children[0].className=="rb2"){
+									mg+=50
+									refreshr+=1;
+								}else if(mouse.children[0].className=="rb1"){
+									mg+=30
+									refreshr+=1;
+								}else if(mouse.children[0].className=="rb3"){
+									mg+=5
+									refreshr+=1;
+								}else if(mouse.children[0].className=="rb4"){
+									mg+=5
+									refreshr+=1;
+								}else if(mouse.children[0].className=="fishl"){
+									mt=mt-5;
+								}else if(mouse.children[0].className=="fishr"){
+									mt=mt-10;
+								}else if(mouse.children[0].className=="fishr"){
+									var num=Math.floor(Math.random()*100);
+									if(num>=80){
+										mg+=60;
+									}else if (num>20) {
+										mg+=30;
+									}else{
+										mt+=30;
+									}
+								}
+								mytime.innerHTML="剩余时间"+mt+"秒";
+								mygrade.innerHTML="分数"+mg;
+								mouse.removeChild(mouse.children[0]);
+								if(refreshr==5){
+									rubbish()
+								}
+							}
+							clearInterval(longtime);
+							rastop=1;
+							longing=1;
+							rota();
+						}
+					}
+				},1)
+			}
+		}
+
+		setInterval(function() {
+			if(begin==false){
+				return false;
+			}
+			var lism=document.getElementsByClassName('moveli');
+			for (var i = 0; i < lism.length; i++) {
+				if(lism[i].children.length==0){
+					move(lism[i])
+				}
+			}
+			mt-=1;
+			mytime.innerHTML="剩余时间"+mt+"秒";
+			if(mt==0){
+				overgame.style.display="block";
+				begin=false;
+				if(false){
+					if(localStorage.length>10){
+						console.log(localStorage[10])
+					}
+					overgame.children[0].innerHTML="您的分数为:"+mg+",恭喜您进入排行榜前十!请留下您的姓名！";
+					overgame.children[1].style.display="block";
+					overgame.children[2].onclick=function() {
+						localStorage.setItem(localStorage.length,overgame.children[1].value+"="+mg);
+						console.log(window.localStorage)
+						window.close();
+						storage();
+					}
+					overgame.children[3].onclick=function() {
+						window.close();
+					}
+				}else{
+					overgame.children[0].innerHTML="您的分数为:"+mg+",抱歉您并未进入排行榜！请再接再厉！";
+					overgame.children[1].style.display="none";
+					overgame.children[2].onclick=function() {
+						window.close();
+					}
+					overgame.children[3].onclick=function() {
+						window.close();
+					}
+				}
+			}
+		},1000)
+
+
+		//抓取判断部分
+
+		function catchboolean(a,b) {
+			/*var booleanx = (Math.abs(a) + hand.offsetHeight )* Math.sin(hudu);
+			var booleany = (Math.abs(b)+hand.offsetHeight - 66)*Math.cos(hudu);
+			if(jiaodu>=0){
+				booleanx = 0.5 * outer.offsetWidth - booleanx ;
+			}else{
+				booleanx = 0.5 * outer.offsetWidth + booleanx ;
+			}*/
+			var y = (Math.abs(a) + hand.offsetHeight) * Math.cos(hudu);
+			var x = (Math.abs(a) + hand.offsetHeight) * Math.sin(hudu);
+			var moveY = hand.offsetWidth * 0.5 * Math.sin(hudu);
+			var moveX = hand.offsetWidth * 0.5 * Math.cos(hudu);
+			var upBooleanx, upBooleany, downBooleanx, downBooleany, flag;
+			if(jiaodu>=0){
+				upBooleanx = 0.5 * outer.offsetWidth - ( x + moveX);
+				downBooleanx = 0.5 * outer.offsetWidth - ( x - moveX);
+			}else{
+				upBooleanx = 0.5 * outer.offsetWidth + ( x + moveX);
+				downBooleanx = 0.5 * outer.offsetWidth + ( x - moveX);
+			}
+			upBooleany = y - moveY;
+			downBooleany = y + moveY;
+			var ps=document.getElementsByTagName('p');
+			var flag;
+			for (var i = 0; i < ps.length; i++) {
+				if((ps[i].offsetLeft >= upBooleanx && ps[i].offsetLeft <= downBooleanx) || (ps[i].offsetLeft <= upBooleanx && ps[i].offsetLeft >= downBooleanx)|| (ps[i].offsetLeft + ps[i].offsetWidth >= upBooleanx && ps[i].offsetLeft + ps[i].offsetWidth <= downBooleanx) ||(ps[i].offsetLeft + ps[i].offsetWidth >= upBooleanx && ps[i].offsetLeft + ps[i].offsetWidth <= downBooleanx)){
+					if(ps[i].parentNode.offsetTop >= upBooleany && ps[i].parentNode.offsetTop <= downBooleany){
+						catchreturn(ps[i])
+						return false;
+						break;
+					}
+				}
+			}
+		}
+
+
+
+		function catchreturn(a) {
+			if(mouse.children.length==0){
+				a.parentNode.removeChild(a);
+				var havecatch=a.cloneNode(true);
+				mouse.appendChild(havecatch);
+				havecatch.setAttribute("id","havecatch");
+				havecatch.style.bottom=-havecatch.offsetHeight+20+"px";
+				havecatch.style.left=-0.5*havecatch.offsetWidth+0.5*mouse.offsetWidth+"px";
+			}
+		}
+
+
+		function move(a) {
+			if(begin==false){
+				return false;
+			}
+			var moveing=document.createElement('p');
+			var num=Math.ceil(Math.random()*200);
+			if(num>=180){
+				moveing.setAttribute("class","rb2");
+				var movespeed=0.5;
+			}else if(num>=140){
+				moveing.setAttribute("class","rb1");
+				var movespeed=0.6;
+			}else if(num>=100){
+				moveing.setAttribute("class","rb3");
+				var movespeed=0.4;
+			}else if(num>=60){
+				moveing.setAttribute("class","rb4");
+				var movespeed=0.5;
+			}else if(num>=15){
+				moveing.setAttribute("class","fish");
+			}else{
+				moveing.setAttribute("class","gift");
+				var movespeed=0.8;
+			}
+			var num2=Math.floor(Math.random()*100);
+			if(num2%2==0){
+				var x=-moveing.offsetWidth;
+				moveing.style.left=x+"px";
+				if (moveing.className=="fish") {
+					moveing.setAttribute("class","fishr");
+					var movespeed=0.4;
+				}
+				a.appendChild(moveing);
+				var fishtime=setInterval(function () {
+					moveing.style.left=x+"px";
+					x+=movespeed;
+					if(a.children[0]){
+						if(a.children[0].offsetLeft>=a.offsetWidth){
+							clearInterval(fishtime)
+							a.removeChild(a.children[0]);
+						}
+					}
+				},1)
+			}else{
+				var x=-moveing.offsetWidth;
+				moveing.style.right=x+"px";
+				if (moveing.className=="fish") {
+					moveing.setAttribute("class","fishl");
+					var movespeed=0.5;
+				}
+				a.appendChild(moveing);
+				var fishtime=setInterval(function () {
+					moveing.style.right=x+"px";
+					x+=movespeed;
+					if(a.children[0]){
+						if(a.children[0].offsetLeft<=-a.children[0].offsetWidth){
+							clearInterval(fishtime);
+							a.removeChild(a.children[0]);
+						}
+					}
+				},1)
+			}
+		}
+		function storage(g) {
+			for (var i = 0; i < localStorage.length; i++) {
+				gradearr[i]=localStorage[i].split("=",2);
+			}
+			for (var i = 0; i < localStorage.length; i++) {
+				for (var j = 0; j < localStorage.length; j++) {
+					if(Number(gradearr[i][1])>Number(gradearr[j][1])){
+						var temp;
+						temp = gradearr[i];
+						gradearr[i]=gradearr[j];
+						gradearr[j]=temp;
+					}
+				}
+			}
+			for (var i = 0; i < 10; i++) {
+				if (localStorage.length<11) {
+					return true;
+					break;
+				}else if(g>Number(localStorage.length,gradearr[gradearr.length-1][1])){
+					return true;
+					break;
+				}
+			}
+			return false;
+		}
+	</script>
+</body>
+</html>

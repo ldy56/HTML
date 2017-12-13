@@ -1,0 +1,503 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="./css/reset.css">
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		body{
+			width: 7.5rem;
+			overflow: hidden;
+		}
+		.head{
+			width: 100%;
+			height: 0.88rem;
+			background: #5a5954;
+			position: relative;
+			text-align: center;
+		}
+		.head p{
+			display: inline-block;
+			width: 0.24rem;
+			height: 0.41rem;
+			background:url("./img/gongdan/btn_1_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			top:0.19rem;
+			left: 0.3rem;
+		}
+		.search{
+			display: inline-block;
+			width: 5.66rem;
+			height: 0.54rem;
+			background: url("./img/gongdan/img_6@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			border: none;
+			margin-top: 0.16rem;
+		}
+		.search input{
+			width: 5.66rem;
+			height: 0.54rem;
+			background: url("./img/gongdan/img_7@2x.png") 1.47rem center no-repeat;
+			background-size: 0.26rem 0.24rem;
+			border: none;
+			text-align: center;
+			line-height:0.54rem ;
+			color: #aaaaaa;
+			font-size: 0.26rem;
+		}
+		.head .select{
+			display: inline-block;
+			width: 0.36rem;
+			height: 0.44rem;
+			background:url("./img/gongdan/btn_9_N@2x .png") 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			top:0.22rem;
+			right: 0.2rem;
+		}
+		.con{
+			width: 100%;
+			background: #eeeeee;
+			position: relative;
+		}
+		.top{
+			width: 100%;
+			background: white;
+		}
+		.top p{
+			width: 1.36rem;
+			height: 0.93rem;
+			display: inline-block;
+			font-size: 0.34rem;
+			text-align: center;
+			line-height: 0.93rem;
+		}
+		.top .select{
+			color: #008dcf;
+			border-bottom: 2px solid #008dcf;
+			
+		}
+		.top p:nth-child(2){
+			margin-left: 2.32rem;
+		}
+		.top p:nth-child(1){
+			margin-left: 1.22rem;
+		}
+		.foot{
+			width: 100%;
+			margin-top: 0.23rem;
+			background: white;
+			position: absolute;
+			top: 1.16rem;
+			left: 0rem;
+			display: block;
+			overflow: hidden;
+		}
+		.foot li{
+			width: 7.5rem;
+			height: 1.8rem;
+			border-bottom: 1px solid #eeeeee;
+			position: relative;
+		}
+		li img{
+			width: 1.03rem;
+			height: 1.03rem;
+			float: left;
+			margin-left: 0.52rem;
+			margin-top: 0.32rem;
+		}
+		.foot1{
+			float: left;
+			margin-top: 0.32rem;
+			margin-left: 0.32rem;
+		}
+		.foot1 p:nth-child(1){
+			font-size: 0.26rem;
+		}
+		.foot1 p:nth-child(1) span{
+			color: #f8593b;
+		}
+		.foot1 p:nth-child(2){
+			color: #aeaeae;
+			font-size: 0.2rem;
+		}
+		.foot1 p:nth-child(3){
+			width: 0.6rem;
+			height: 0.3rem;
+			color: #018ccf;
+			background: url("./img/gongdan/img_2@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			font-size: 0.2rem;
+			text-align: center;
+			border-radius: 3px;
+			margin-top: 0.16rem;
+		}
+		.foot1 p:nth-child(4){
+			position: absolute;
+			top: 0rem;
+			right: -0.4rem;
+			width: 0.76rem;
+			height: 1.8rem;
+			background: #373737;
+			color: white;
+			font-size: 0.34rem;
+			line-height: 1.8rem;
+			display: none;
+		}
+		.publish{
+			width: 100%;
+			margin-top: 0.23rem;
+			background: white;
+			position: absolute;
+			top: 1.16rem;
+			left: 0rem;
+			display: none;
+		}
+		.publish li{
+			width: 100%;
+			height: 1.5rem;
+			border-bottom: 1px solid #eeeeee;
+			line-height: 1.5rem;
+		}
+		.publish span{
+			float: left;
+			font-size: 0.34rem;
+			margin-left: 0.2rem;
+		}
+		.publish li input{
+			width: 5.75rem;
+			float: right;
+			height: 1.5rem;
+			border: none;
+			font-size: 0.26rem;
+			color: #d1d1d1;
+		}
+		.publish li:nth-child(7){
+			width: 100%;
+			height: 2.28rem;
+			text-align: center;
+			line-height: 2.28rem;
+		}
+		.publish li:nth-child(7) button{
+			width: 5.6rem;
+			height: 0.8rem;
+			background: #313035;
+			border-radius: 0.3rem;
+			border: none;
+			font-size: 0.34rem;
+			color: white;
+		}
+		.publish li:nth-child(8){
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			display: none;
+		}
+		.publish li:nth-child(8) p{
+			width: 2.6rem;
+			height:2.6rem;
+			background: url("./img/gongdan/cg.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -1.3rem;
+			margin-top: -1.3rem;
+		}
+		.publish li:nth-child(8) img{
+			width: 1.14rem;
+			height: 0.8rem;
+			margin: 0.8rem 0.8rem;
+		}
+		.hui{
+			width: 100%;
+			height: 0.23;
+			height: 0.93rem;
+		}
+		.nav li:nth-child(1){
+			width: 0.9rem;
+			height: 0.9rem;
+			background: url("./img/gongdan/btn_3_n@2x .png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 0.1rem;
+			left:  0.1rem;
+			z-index: 1;
+		}
+		.nav li:nth-child(2){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("./img/gongdan/btn_7_n@2x .png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 1.73rem;
+			left: 0.23rem;
+			display: none;	
+		}
+		.nav li:nth-child(3){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("./img/gongdan/btn_5_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 1.4rem;
+			left: 0.9rem;
+			display: none;
+		}
+		.nav li:nth-child(4){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("./img/gongdan/btn_6_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 0.9rem;
+			left: 1.5rem;
+			display: none;
+		}
+		.nav li:nth-child(5){
+			width: 0.6rem;
+			height: 0.6rem;
+			background: url("./img/gongdan/btn_4_n@2x.png") 0 0 no-repeat;
+			background-size: 100%;
+			position: fixed;
+			bottom: 0.23rem;
+			left: 1.73rem;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="head">
+		<p class="back"></p>
+		<div class="search">
+			<input type="text" name="" value="搜索会员和关键字">
+		</div>
+		<div class="select">
+		</div>
+	</div>
+	<div class="con">
+		<div class="top">
+			<p class="select">工单展示</p>
+			<p>发布工单</p>
+		</div>
+		<div class="hui">		
+		</div>
+		<ul class="foot">
+			<li>
+				<img src="./img/gongdan/img_1@2x.png" alt="">
+				<div class="foot1">
+					<p class="jieshao"><span>￥300.00</span>加急logo名片设计，仅接受比稿</p>
+					<p>蓝色天边发布|0接单</p>
+					<p>企业</p>
+					<p class="shanchu">删除</p>
+				</div>
+			</li>
+			<li>
+				<img src="./img/gongdan/img_1@2x.png" alt="">
+				<div class="foot1">
+					<p class="jieshao"><span>￥300.00</span>加急logo名片设计，仅接受比稿</p>
+					<p>蓝色天边发布|0接单</p>
+					<p>企业</p>
+					<p class="shanchu">删除</p>
+				</div>
+			</li>
+			<li>
+				<img src="./img/gongdan/img_1@2x.png" alt="">
+				<div class="foot1">
+					<p class="jieshao"><span>￥300.00</span>加急logo名片设计，仅接受比稿</p>
+					<p>蓝色天边发布|0接单</p>
+					<p>企业</p>
+					<p class="shanchu">删除</p>
+				</div>
+			</li>
+			<li>
+				<img src="./img/gongdan/img_1@2x.png" alt="">
+				<div class="foot1">
+					<p class="jieshao"><span>￥300.00</span>加急logo名片设计，仅接受比稿</p>
+					<p>蓝色天边发布|0接单</p>
+					<p>企业</p>
+					<p class="shanchu">删除</p>
+				</div>				
+			</li>	
+			<li>
+				<img src="./img/gongdan/img_1@2x.png" alt="">
+				<div class="foot1">
+					<p class="jieshao"><span>￥300.00</span>加急logo名片设计，仅接受比稿</p>
+					<p>蓝色天边发布|0接单</p>
+					<p>企业</p>
+					<p class="shanchu">删除</p>
+				</div>
+			</li>
+			<li>
+				<img src="./img/gongdan/img_1@2x.png" alt="">
+				<div class="foot1">
+					<p class="jieshao"><span>￥300.00</span>加急logo名片设计，仅接受比稿</p>
+					<p>蓝色天边发布|0接单</p>
+					<p>企业</p>
+					<p class="shanchu">删除</p>
+				</div>
+			</li>
+		</ul>
+		<ol class="publish">
+			<li>
+				<span>标题</span>
+				<input type="text" name="" value="请输入工单发布的标题">
+			</li>
+			<li>
+				<span>品类</span>
+				<input type="text" name="" value="选择工单的品类">
+			</li>
+			<li>
+				<span>内容</span>
+				<input type="text" name="" value="选择工单的内容">
+			</li>
+			<li>
+				<span>奖金数额</span>
+				<input type="text" name="" value="">
+			</li>
+			<li>
+				<span>完成时间</span>
+				<input type="text" name="" value="">
+			</li>
+			<li>
+				<span>上传图片</span>
+				<input type="text" name="" value="">
+			</li>
+			<li>
+				<button id="tijiao">提交</button>
+			</li>
+			<li class="chenggong">
+				<p>
+					<img src="./img/gongdan/cg1.png" alt="">
+				</p>
+			</li>
+		</ol>
+	</div>
+	<div class="nav">
+		<ul>
+			<li id="nav1"></li>
+			<li id="knowledge"></li>
+			<li id="share"></li>
+			<li id="order"></li>
+			<li id="my"></li>
+		</ul>
+	</div>
+	<script>
+		function rem() {
+			var html=document.getElementsByTagName('html')[0];
+			var Ww=document.documentElement.clientWidth;
+			var scale=Ww/750;
+			html.style.fontSize=scale*100+"px";
+		}
+		rem()
+		window.onresize=function(){
+			rem()
+		}
+		$(function () {
+			$(".top p").eq(0).on("touchstart",function(){
+				$(this).addClass("select").siblings().removeClass("select");
+				$(".foot").css("display","block")
+				$(".publish").css("display","none")
+			})
+			$(".top p").eq(1).on("touchstart",function(){
+				$(this).addClass("select").siblings().removeClass("select");
+				$(".foot").css("display","none")
+				$(".publish").css("display","block")
+
+			})
+			$(document).on("touchstart",function (ev) {
+				var ev=ev||window.event
+				var target=ev.target||target.srcElement
+				if (target.id=="nav1") {
+					$("#my").delay(800).fadeToggle(500)
+					$("#share").delay(400).fadeToggle(500)
+					$("#knowledge").delay(200).fadeToggle(500)
+					$("#order").delay(600).fadeToggle(500)
+				}
+				if (target.id=="my") {
+					window.open("./wode.html","_self" )
+				};
+				if (target.id=="share") {
+					window.open("./fabuwenzhang.html","_self" )
+				};
+				if (target.id=="knowledge") {
+					
+				};
+				if (target.id=="order") {
+					window.open("./gongdan.html","_self" )
+				};
+				if (target.className=="jieshao"&&target.parentNode.className=="foot1") {
+					window.open("./gongdanjieshao.html","_self" )
+				}
+				if (target.id=="tijiao") {
+					$(".publish li").eq(7).css("display","block")
+				}
+				if (target.className=="chenggong") {
+					$(".publish li").eq(7).css("display","none")
+				}
+				if (target.className=="back") {
+					history.back()
+				}
+				if (target.className=="select"&&target.parentNode.className=="head") {
+					$('.foot li').bind('touchstart',function(e){
+					    startX = e.originalEvent.changedTouches[0].pageX,
+					    startY = e.originalEvent.changedTouches[0].pageY;
+					});
+					$('.foot li').bind('touchmove',function(e){
+					    //获取滑动屏幕时的X,Y
+
+					    endX = e.originalEvent.changedTouches[0].pageX,
+					    endY = e.originalEvent.changedTouches[0].pageY;
+					    //获取滑动距离
+					    distanceX = endX-startX;
+					    distanceY = endY-startY;
+					    //判断滑动方向 
+					    if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<0){
+					    	console.log("左")
+					        $(this).find(".shanchu").css("display","block")
+							$(this).css({
+								"transition":"all 0.5s linear",
+								"margin-left":-0.4+"rem"
+							})
+					    }
+					    if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>0){
+					    	console.log("右")
+					        $(this).find(".shanchu").css("display","none")
+								$(this).css({
+								"transition":"all 0.5s linear",
+								"margin-left":0+"rem"
+							})
+					    }
+
+					});
+
+　　
+					// $(".foot li").on("touchmove",function () {
+					// 	$(this).find(".shanchu").css("display","block")
+					// 	$(this).animate({
+					// 		"margin-left":"-0.4rem"
+					// 	},1000)
+					// })
+				}
+				if (target.className=="shanchu") {
+					console.log($(target).parent().parent())
+					$(target).parent().parent().remove()
+				}
+				if (target.className=="back") {
+					history.back()
+				}
+			})
+		})
+	</script>
+</body>
+</html>
